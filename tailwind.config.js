@@ -8,10 +8,18 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'app': 'url("/assets/bg.jpg")',
+        'divider': 'linear-gradient(to left, #12c2e9, #c471ed, #f64f59)',
       },
+      backgroundSize: {
+        'divider': '120% 2px',
+      },
+      transitionTimingFunction: {
+        'menu-icon': 'cubic-bezier(0.190, 1.000, 0.220, 1.000)',
+      }
+    },
+    data: {
+      main: 'section~="home"',
     },
   },
   plugins: [],

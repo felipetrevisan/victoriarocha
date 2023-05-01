@@ -1,14 +1,14 @@
 "use client";
 
-import { Home as Main } from "@/components/Sections/Home";
+import { About } from "@/components/Sections/About";
 import { useApp } from "@/hooks/useApp";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
 
-export default function Home() {
+export default function Release() {
   const pathName = usePathname();
-  const refHome = useRef<HTMLDivElement>(null);
-
+  const refRelease = useRef<HTMLDivElement>(null);
+  
   const { setCurrentSection, getSection } = useApp();
 
   useEffect(() => {
@@ -17,11 +17,11 @@ export default function Home() {
 
   return (
     <section
-      ref={refHome}
-      className="flex items-center justify-center bg-app bg-cover h-screen"
-      data-section="home"
+      ref={refRelease}
+      className="py-12 sm:py-16 md:py-28"
+      data-section="release"
     >
-      <Main />
+      <About />
     </section>
   );
 }
