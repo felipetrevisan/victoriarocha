@@ -20,27 +20,24 @@ export function Home() {
 
   return (
     <div className={classes}>
-      {/* <main
-          className="flex flex-col items-center justify-center h-screen h-[calc(100vh - var(--header-size))]"
-          data-menu-open={isMenuOpen}
-        > */}
       <div className="flex flex-col gap-1 items-center justify-center h-screen">
         <h4
-          className={`text-purple-500 text-2xl font-light ${oswald.className}`}
+          className={`text-purple-500 lg:text-2xl text-xl font-light ${oswald.className}`}
         >
           Atriz & Modelo
         </h4>
-        <h1 className={`text-8xl font-light ${oswald.className}`}>
+        <h1 className={`lg:text-8xl text-6xl font-light ${oswald.className}`}>
           Victória Rocha
         </h1>
-        <Link
-          href="#"
-          className="after:absolute after:w-full after-h-0 after:top-1/2 after-left-1/2 after:-translate-y-1/2 after:-translate-x-1/2 after:rotate-45 after:bg-purple-500 after:opacity-0 after:-z-[1 after:transition-all hover:after:h-[260%] hover:after:opacity-100 py-4 px-10 my-10 mx-7 uppercase relative transition-all border border-white text-white overflow-hidden text-lg"
-        >
-          Contato
-        </Link>
+        <div className="h-16 w-1/6 my-10">
+          <Link
+            href="/contact"
+            className="flex h-full w-full items-center justify-center relative rounded-md hover:after:animate-pulse after:rounded-md after:-z-[1] after:absolute after:h-[calc(100%+3px*2)] after:w-[calc(100%+3px*2)] after:top-[-1*3px] after:left-[-1*3px] after:bg-gradient-to-r after:from-[#12c2e9] after:via-[#c471ed] after:to-[#f64f59] bg-black/90 hover:bg-black/70"
+          >
+            <span className="uppercase text-white text-sm md:text-md lg:text-lg">Entre em contato</span>
+          </Link>
+        </div>
       </div>
-      {/* </main> */}
     </div>
   );
 }

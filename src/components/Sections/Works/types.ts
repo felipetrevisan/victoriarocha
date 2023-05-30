@@ -1,9 +1,10 @@
 export interface ImageProps {
   id: number;
-  height: string;
-  width: string;
-  public_id: string;
-  format: string;
+  key: string | undefined;
+  url: string | undefined;
+  height?: string;
+  width?: string;
+  format?: string;
   blurDataUrl?: string;
 }
 
@@ -11,8 +12,8 @@ export interface SharedModalProps {
   index: number;
   images?: ImageProps[];
   currentPhoto?: ImageProps;
-  changePhotoId: (newVal: number) => void;
-  closeModal: () => void;
   navigation: boolean;
   direction?: number;
+  changePhotoId: (newVal: number) => void;
+  closeModal: () => void;
 }

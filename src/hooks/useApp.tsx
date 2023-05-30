@@ -10,15 +10,23 @@ import {
 } from "react";
 import { usePathname } from "next/navigation";
 import { Section, defaultSections } from "@/components/Menu/type";
+import { ImageProps } from "@/components/Sections/Works/types";
 
 type AppContextProps = {
   isMenuOpen: boolean;
   sections: Section[];
   currentSection: Section;
+  lastViewedPhoto: number | null;
+  currentViewPhoto: number | null;
+  books: ImageProps[];
   openMenu: () => void;
   closeMenu: () => void;
-  setCurrentSection: Dispatch<SetStateAction<Section>>;
+  isHome: () => boolean;
   getSection: (sectionName: string) => Section;
+  setCurrentSection: Dispatch<SetStateAction<Section>>;
+  setLastViewedPhoto: Dispatch<SetStateAction<number | null>>;
+  setBooks: Dispatch<SetStateAction<ImageProps[]>>;
+  setCurrentViewPhoto: Dispatch<SetStateAction<number | null>>;
   // setSections: Dispatch<SetStateAction<Section[]>>;
 };
 
@@ -30,6 +38,9 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const [sections, setSections] = useState<Section[]>(defaultSections);
+  const [lastViewedPhoto, setLastViewedPhoto] = useState<number | null>(null);
+  const [currentViewPhoto, setCurrentViewPhoto] = useState<number | null>(null);
+  const [books, setBooks] = useState<ImageProps[]>([]);
 
   const [currentSection, setCurrentSection] = useState<Section>(() => {
     return defaultSections.find((section) => section.path === pathName)!;
@@ -37,12 +48,16 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 
   const openMenu = () => setIsMenuOpen(true);
   const closeMenu = () => setIsMenuOpen(false);
+  const isHome = useCallback(
+    () => currentSection?.path === "/",
+    [currentSection]
+  );
 
   const getSection = useCallback(
     (sectionPath: string) => {
       let path = sectionPath || "/";
 
-      return sections.find((section) => section.path === path)!;
+      return sections.find((section) => section?.path === path)!;
     },
     [sections]
   );
@@ -55,8 +70,15 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         isMenuOpen,
         sections,
         currentSection,
-        setCurrentSection,
+        lastViewedPhoto,
+        currentViewPhoto,
+        books,
+        isHome,
         getSection,
+        setCurrentSection,
+        setLastViewedPhoto,
+        setCurrentViewPhoto,
+        setBooks
       }}
     >
       {children}

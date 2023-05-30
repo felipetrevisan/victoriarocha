@@ -1,13 +1,13 @@
 "use client";
 
-import { Release as Content } from "@/components/Sections/Release";
+import { Contact as Content } from "@/components/Sections/Contact";
 import { useApp } from "@/hooks/useApp";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
 
-export default function Release() {
+export default function Contact() {
   const pathName = usePathname();
-  const refRelease = useRef<HTMLDivElement>(null);
+  const refContact = useRef<HTMLDivElement>(null);
   
   const { setCurrentSection, getSection } = useApp();
 
@@ -17,9 +17,9 @@ export default function Release() {
 
   return (
     <section
-      ref={refRelease}
+      ref={refContact}
       className="py-32 px-10 md:py-32"
-      data-section="release"
+      data-section="contact"
     >
       <Content />
     </section>

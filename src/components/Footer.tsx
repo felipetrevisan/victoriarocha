@@ -1,12 +1,17 @@
 "use client";
 
+import { useApp } from "@/hooks/useApp";
 import { Oswald } from "next/font/google";
 
 const oswald = Oswald({ subsets: ["latin"] });
 
 export function Footer() {
+  const { isHome } = useApp();
+
+  if (isHome()) return <></>;
+
   return (
-    <footer className="footer bg-white border-t border-black border-opacity-10 py-5 dark:bg-black dark:border-white dark:border-opacity-10">
+    <footer className="footer w-screen bg-black/70 shadow-black backdrop-blur-x border-t border-black border-opacity-10 py-5 dark:bg-black dark:border-white dark:border-opacity-10">
       <div className="container">
         <div className="grid grid-cols-12">
           <div className="col-span-12 md:col-span-6 flex pb-3 md:pb-0">
