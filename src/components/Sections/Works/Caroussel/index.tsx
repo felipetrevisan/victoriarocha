@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useRouter } from "next/router";
 import { useApp } from "@/hooks/useApp";
 import type { ImageProps } from "../types";
 import SharedModal from "../Modal/shared";
@@ -17,7 +16,6 @@ export default function Carousel({
 
   function closeModal() {
     setLastViewedPhoto(currentPhoto.id || null);
-    //router.push("/", undefined, { shallow: true });
   }
 
   const changePhotoId = (newVal: number) => newVal;

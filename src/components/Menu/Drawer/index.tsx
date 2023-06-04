@@ -13,8 +13,9 @@ interface Props {
 }
 
 export function MenuDrawer({ isOpen = false, sections, current, type, className = "" }: Props) {
-  const classes = clsx(className, 'fixed bottom-0 right-0 top-0 z-[1045] flex h-screen w-full max-w-full -translate-x-full flex-col border-none bg-black/95 bg-clip-padding text-neutral-700 shadow-sm outline-none backdrop-blur-2xl transition duration-300 ease-in-out dark:text-neutral-200 lg:w-72 [&[data-open]]:transform-none', {
-    invisible: !isOpen,
+  const classes = clsx(className, 'fixed bottom-0 right-0 z-[1045] flex h-screen w-full max-w-full -translate-x-full flex-col border-none bg-black/95 bg-clip-padding text-neutral-700 shadow-sm outline-none backdrop-blur-2xl transition duration-300 ease-in-out dark:text-neutral-200 lg:w-72 [&[data-open]]:transform-none', {
+    'invisible top-0': !isOpen,
+    'top-[var(--header-size)]': isOpen
   });
 
   return (

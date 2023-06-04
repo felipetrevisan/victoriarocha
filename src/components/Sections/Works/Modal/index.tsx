@@ -24,12 +24,11 @@ export default function Modal({
   const [direction, setDirection] = useState(0);
   const [curIndex, setCurIndex] = useState(index);
 
-  function handleClose() {
-    //router.push("/", undefined, { shallow: true });
+  const handleClose = () => {
     if (onClose !== undefined) onClose();
   }
 
-  function changePhotoId(newVal: number) {
+  const changePhotoId = (newVal: number) => {
     if (newVal > index) {
       setDirection(1);
     } else {
@@ -38,14 +37,6 @@ export default function Modal({
 
     setCurIndex(newVal);
     setCurrentViewPhoto(newVal);
-
-    // router.push(
-    //   {
-    //     query: { photoId: newVal },
-    //   },
-    //   `/photo/${newVal}`,
-    //   { shallow: true }
-    // );
   }
 
   return (
@@ -54,7 +45,7 @@ export default function Modal({
       open={true}
       onClose={handleClose}
       initialFocus={overlayRef}
-      className="fixed inset-0 z-10 flex items-center justify-center"
+      className="fixed inset-0 z-[100] flex items-center justify-center"
     >
       <Dialog.Overlay
         ref={overlayRef}

@@ -6,7 +6,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
-  --header-size: @apply w-24;
+  --header-size: 4.5rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -30,10 +30,6 @@ body {
 .container {
   @apply z-50 w-full mx-auto 2xl:max-w-[1400px] xl:max-w-[1280px] lg:max-w-[1024px] md:max-w-[768px] max-w-[640px];
 }
-
-/*section .container {
-  @apply min-h-screen;
-}*/
 
 section[data-section="videos"] iframe {
   @apply rounded-lg;

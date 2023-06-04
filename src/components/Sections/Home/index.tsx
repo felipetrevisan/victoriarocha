@@ -11,7 +11,7 @@ export function Home() {
   const { isMenuOpen } = useApp();
 
   const classes = clsx(
-    "h-screen bg-black/70 w-full max-w-[1480px] aspect-video transition-all ease-in-out",
+    "h-screen bg-black/70 w-full aspect-video transition-all ease-in-out",
     {
       "backdrop-blur-sm": !isMenuOpen,
       "backdrop-blur-lg": isMenuOpen,

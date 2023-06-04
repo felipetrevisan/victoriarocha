@@ -47,17 +47,9 @@ export function Videos({ data }: Props) {
 
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>(options);
 
-  // useEffect(() => {
-  //   instanceRef?.current?.update({ ...options });
-  // }, [instanceRef, options]);
-
   if (pathName) {
     setCurrentSection(getSection(pathName));
   }
-
-  // useEffect(() => {
-  //   setCurrentSection(getSection(pathName));
-  // }, [getSection, pathName, setCurrentSection]);
 
   const showVideo = (video: Video) => {
     setCurrentVideo(video);

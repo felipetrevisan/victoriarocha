@@ -14,10 +14,8 @@ export function Release() {
               <Image
                 className="w-[300px] h-[300px] md:w-[400px] md:h-[400px] lg:w-[400px] lg:h-[400px]"
                 src="/assets/profile.webp"
-                alt=""
+                alt="Foto"
                 fill
-                // width={400}
-                // height={350}
                 style={{ objectFit: "cover" }}
               />
             </div>

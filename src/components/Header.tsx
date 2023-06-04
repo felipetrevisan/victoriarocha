@@ -2,9 +2,7 @@
 
 import { useLayoutEffect } from "react";
 import { Oswald } from "next/font/google";
-import { Menu as IconMenu, X } from "lucide-react";
 import { Menu } from "./Menu";
-import { MenuTypes } from "./Menu/type";
 import { useApp } from "@/hooks/useApp";
 import useKeyPress from "@/hooks/useKeyPress";
 
@@ -27,10 +25,9 @@ export function Header() {
   return (
     <>
       <header
-        className="fixed left-0 right-0 top-0 z-[100] bg-black/70 px-2 shadow-black backdrop-blur-xl data-main:border data-main:border-black/5 data-main:backdrop-blur-md lg:top-2 lg:mx-5 lg:rounded-full lg:data-main:bg-black/30"
+        className="fixed left-0 right-0 top-0 z-[100] bg-black/70 px-5 shadow-black backdrop-blur-xl data-main:border data-main:border-black/5 data-main:backdrop-blur-md lg:mx-5 lg:rounded-b-3xl lg:rounded-t-none lg:px-2 lg:data-main:top-2 lg:data-main:rounded-full lg:data-main:bg-black/30"
         data-section={currentSection?.name || ""}
       >
-        {/* <div className="w-full mr-auto ml-auto flex items-center justify-between select-none relative py-5 lg:py-4 container"> */}
         <div className="container relative flex select-none items-center justify-between py-5 lg:py-4">
           <div>
             <h2
@@ -39,27 +36,27 @@ export function Header() {
               Victória Rocha
             </h2>
           </div>
-          {/* <button className="flex w-[40px] flex-col lg:hidden">
-          <span className="inline-block h-[2px] w-[25px] bg-slate-900"></span>
-          <span className="my-[5px] inline-block h-[2px] w-[25px] bg-slate-900"></span>
-          <span className="inline-block h-[2px] w-[25px] bg-slate-900"></span>
-        </button> */}
-          <button
-            type="button"
-            onClick={isMenuOpen ? closeMenu : openMenu}
-            data-menu-open={isMenuOpen}
-            className="flex w-[40px] p-2 transition-all ease-menu-icon hover:rounded-full hover:bg-purple-500/40 hover:p-2 data-[menu-open=true]:absolute data-[menu-open=true]:-right-48 data-[menu-open=true]:top-5 data-[menu-open=true]:mr-48 lg:hidden lg:data-[menu-open=true]:relative lg:data-[menu-open=true]:right-auto lg:data-[menu-open=true]:top-auto lg:data-[menu-open=true]:z-auto lg:data-[menu-open=true]:mr-56"
-          >
-            {isMenuOpen ? <X size={30} /> : <IconMenu size={30} />}
-          </button>
+          <div className="flex h-full select-none items-center justify-end lg:hidden">
+            <div
+              aria-label={isMenuOpen ? "close menu" : "open menu"}
+              className="group relative h-8 w-10 rotate-0 cursor-pointer transition-all ease-in-out data-[menu-state=closed]:flex data-[menu-state=closed]:flex-col data-[menu-state=closed]:gap-1"
+              data-menu-state={isMenuOpen ? "expanded" : "closed"}
+              onClick={isMenuOpen ? closeMenu : openMenu}
+            >
+              <div className="absolute left-0 top-2 block h-[1px] w-full rotate-0 rounded-lg bg-purple-400 opacity-100 transition-all ease-in-out group-data-[menu-state=expanded]:left-2/4 group-data-[menu-state=expanded]:top-4 group-data-[menu-state=expanded]:w-0"></div>
+              <div className="absolute left-0 top-4 block h-[1px] w-full rotate-0 rounded-lg bg-purple-400 opacity-100 transition-all ease-in-out group-data-[menu-state=expanded]:rotate-45"></div>
+              <div className="absolute left-0 top-4 block h-[1px] w-full rotate-0 rounded-lg bg-purple-400 opacity-100 transition-all ease-in-out group-data-[menu-state=expanded]:-rotate-45"></div>
+              <div className="absolute left-0 top-6 block h-[1px] w-full rotate-0 rounded-lg bg-purple-400 opacity-100 transition-all ease-in-out group-data-[menu-state=expanded]:left-2/4 group-data-[menu-state=expanded]:top-4 group-data-[menu-state=expanded]:w-0"></div>
+            </div>
+          </div>
           <div className="hidden lg:flex">
             <Menu isOpen={false} />
           </div>
-          <div className="flex lg:hidden">
-            <Menu isOpen={isMenuOpen} />
-          </div>
         </div>
       </header>
+      <div className="flex lg:hidden">
+        <Menu isOpen={isMenuOpen} />
+      </div>
     </>
   );
 }

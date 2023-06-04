@@ -27,7 +27,6 @@ type AppContextProps = {
   setLastViewedPhoto: Dispatch<SetStateAction<number | null>>;
   setBooks: Dispatch<SetStateAction<ImageProps[]>>;
   setCurrentViewPhoto: Dispatch<SetStateAction<number | null>>;
-  // setSections: Dispatch<SetStateAction<Section[]>>;
 };
 
 const AppContext = createContext({} as AppContextProps);
@@ -48,6 +47,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 
   const openMenu = () => setIsMenuOpen(true);
   const closeMenu = () => setIsMenuOpen(false);
+  
   const isHome = useCallback(
     () => currentSection?.path === "/",
     [currentSection]

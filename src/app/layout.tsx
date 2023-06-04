@@ -3,6 +3,7 @@ import "./globals.css";
 import { AppProvider } from "@/hooks/useApp";
 import { Footer } from "@/components/Footer";
 import { Content } from "@/components/Content";
+import { Body } from "@/components/Body";
 
 export const metadata = {
   title: "Victória Rocha",
@@ -18,11 +19,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <AppProvider>
-        <body className="bg-zinc-950/90 transition-all duration-300 ease-out">
+      {/* transition-all duration-300 ease-out */}
+        <Body>
           <Header />
           <Content>{children}</Content>
           <Footer />
-        </body>
+        </Body>
       </AppProvider>
     </html>
   );
