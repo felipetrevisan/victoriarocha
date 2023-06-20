@@ -17,11 +17,13 @@ export default function App() {
           <Divider position="top" />
           <Divider position="bottom" />
         </div>
+        {/* @ts-expect-error Server Component */}
         <Books />
       </div>
       <div className="relative">
         <Divider position="top" />
         <Divider position="bottom" />
+        {/* @ts-expect-error Server Component */}
         <Videos />
       </div>
       <div className="relative">
