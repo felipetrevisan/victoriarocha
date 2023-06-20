@@ -1,27 +1,34 @@
-"use client";
+import { Divider } from "@/components/Divider";
+import Books from "./books/page";
+import Home from "./home/page";
+import Release from "./release/page";
+import Videos from "./videos/page";
+import Contact from "./contact/page";
 
-import { Home as Content } from "@/components/Sections/Home";
-import { useApp } from "@/hooks/useApp";
-import { usePathname } from "next/navigation";
-import { useEffect, useRef } from "react";
-
-export default function Home() {
-  const pathName = usePathname();
-  const refHome = useRef<HTMLDivElement>(null);
-
-  const { setCurrentSection, getSection } = useApp();
-
-  useEffect(() => {
-    setCurrentSection(getSection(pathName));
-  }, [getSection, pathName, setCurrentSection]);
-
+export default function App() {
   return (
-    <section
-      ref={refHome}
-      className="flex h-screen items-center justify-center bg-app bg-cover"
-      data-section="home"
-    >
-      <Content />
-    </section>
+    <>
+      <Home />
+      <div className="relative">
+        <Release />
+      </div>
+      <div className="relative">
+        <div className="relative">
+          <Divider position="top" />
+          <Divider position="bottom" />
+        </div>
+        <Books />
+      </div>
+      <div className="relative">
+        <Divider position="top" />
+        <Divider position="bottom" />
+        <Videos />
+      </div>
+      <div className="relative">
+        <Divider position="top" />
+        <Divider position="bottom" />
+        <Contact />
+      </div>
+    </>
   );
 }

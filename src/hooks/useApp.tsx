@@ -15,14 +15,16 @@ import { ImageProps } from "@/components/Sections/Works/types";
 type AppContextProps = {
   isMenuOpen: boolean;
   sections: Section[];
+  isHome: boolean;
   currentSection: Section;
   lastViewedPhoto: number | null;
   currentViewPhoto: number | null;
   books: ImageProps[];
   openMenu: () => void;
   closeMenu: () => void;
-  isHome: () => boolean;
+  isInHome: () => boolean;
   getSection: (sectionName: string) => Section;
+  setIsHome: Dispatch<SetStateAction<boolean>>;
   setCurrentSection: Dispatch<SetStateAction<Section>>;
   setLastViewedPhoto: Dispatch<SetStateAction<number | null>>;
   setBooks: Dispatch<SetStateAction<ImageProps[]>>;
@@ -37,6 +39,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const [sections, setSections] = useState<Section[]>(defaultSections);
+  const [isHome, setIsHome] = useState<boolean>(false);
   const [lastViewedPhoto, setLastViewedPhoto] = useState<number | null>(null);
   const [currentViewPhoto, setCurrentViewPhoto] = useState<number | null>(null);
   const [books, setBooks] = useState<ImageProps[]>([]);
@@ -48,7 +51,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const openMenu = () => setIsMenuOpen(true);
   const closeMenu = () => setIsMenuOpen(false);
   
-  const isHome = useCallback(
+  const isInHome = useCallback(
     () => currentSection?.path === "/",
     [currentSection]
   );
@@ -70,12 +73,14 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         isMenuOpen,
         sections,
         currentSection,
+        isInHome,
         lastViewedPhoto,
         currentViewPhoto,
         books,
         isHome,
         getSection,
         setCurrentSection,
+        setIsHome,
         setLastViewedPhoto,
         setCurrentViewPhoto,
         setBooks

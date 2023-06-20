@@ -17,7 +17,7 @@ export function Item({
   active = false,
   className = "",
 }: Props) {
-  const classesMenu = clsx({
+  const classesMenu = clsx('text-white', {
     "after:left-0 after-right-auto after:w-full text-purple-300":
       active && type === MenuTypes.top,
     "hover:animate-pulse": !active && type === MenuTypes.drawer,

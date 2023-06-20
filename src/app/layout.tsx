@@ -19,7 +19,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <AppProvider>
-      {/* transition-all duration-300 ease-out */}
         <Body>
           <Header />
           <Content>{children}</Content>

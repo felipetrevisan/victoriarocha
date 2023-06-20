@@ -5,13 +5,12 @@ import { Oswald } from "next/font/google";
 import { Menu } from "./Menu";
 import { useApp } from "@/hooks/useApp";
 import useKeyPress from "@/hooks/useKeyPress";
+import clsx from "clsx";
 
 const oswald = Oswald({ subsets: ["latin"] });
 
-// const defaultMenuType = MenuTypes.drawer;
-
 export function Header() {
-  const { openMenu, closeMenu, isMenuOpen, currentSection } = useApp();
+  const { openMenu, closeMenu, isMenuOpen, currentSection, isHome, isInHome } = useApp();
   const escPressed: boolean = useKeyPress("Escape");
 
   useLayoutEffect(() => {
@@ -22,16 +21,21 @@ export function Header() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [escPressed]);
 
+  const classes = clsx('fixed left-0 right-0 top-0 z-[100] lg:px-2 px-5 shadow-black backdrop-blur-xl', {
+    'border border-black/5 backdrop-blur-md lg:bg-black/30': isHome || isInHome(),
+    'backdrop-blur-md bg-black/70 lg:bg-black/70 lg:rounded-none lg:mx-0 lg:px-0 px-0': !isHome || !isInHome()
+  })
+
   return (
     <>
       <header
-        className="fixed left-0 right-0 top-0 z-[100] bg-black/70 px-5 shadow-black backdrop-blur-xl data-main:border data-main:border-black/5 data-main:backdrop-blur-md lg:mx-5 lg:rounded-b-3xl lg:rounded-t-none lg:px-2 lg:data-main:top-2 lg:data-main:rounded-full lg:data-main:bg-black/30"
+        className={classes}
         data-section={currentSection?.name || ""}
       >
         <div className="container relative flex select-none items-center justify-between py-5 lg:py-4">
           <div>
             <h2
-              className={`${oswald.className} text-2xl md:text-3xl lg:text-4xl`}
+              className={`${oswald.className} text-white datext-2xl md:text-3xl lg:text-4x`}
             >
               Victória Rocha
             </h2>

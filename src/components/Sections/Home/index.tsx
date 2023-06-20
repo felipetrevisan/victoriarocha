@@ -26,13 +26,13 @@ export function Home() {
         >
           Atriz & Modelo
         </h4>
-        <h1 className={`lg:text-8xl text-6xl font-light ${oswald.className}`}>
+        <h1 className={`text-white lg:text-8xl text-6xl font-light ${oswald.className}`}>
           Victória Rocha
         </h1>
         <div className="h-16 w-1/6 my-10">
           <Link
             href="/contact"
-            className="flex h-full w-full items-center justify-center relative rounded-md hover:after:animate-pulse after:rounded-md after:-z-[1] after:absolute after:h-[calc(100%+3px*2)] after:w-[calc(100%+3px*2)] after:top-[-1*3px] after:left-[-1*3px] after:bg-gradient-to-r after:from-[#12c2e9] after:via-[#c471ed] after:to-[#f64f59] bg-black/90 hover:bg-black/70"
+            className="flex h-full w-full items-center justify-center relative rounded-md hover:after:animate-pulse after:rounded-md after:-z-[1] after:absolute after:h-[calc(100%+3px*2)] after:w-[calc(100%+3px*2)] after:top-[-1*3px] after:left-[-1*3px] after:bg-gradient-to-r after:from-[#12c2e9] after:via-[#c471ed] after:to-[#f64f59] bg-black/70 hover:bg-black/50 dark:bg-black/90 dark:hover:bg-black/70"
           >
             <span className="uppercase text-white text-sm md:text-md lg:text-lg">Entre em contato</span>
           </Link>
