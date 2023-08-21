@@ -9,6 +9,7 @@ type Props = {
   active: boolean;
   className?: string;
   type: MenuTypes;
+  onClick?: () => void;
 };
 
 export function Item({
@@ -16,6 +17,7 @@ export function Item({
   type,
   active = false,
   className = "",
+  onClick
 }: Props) {
   const classesMenu = clsx('text-white', {
     "after:left-0 after-right-auto after:w-full text-purple-300":
@@ -31,7 +33,7 @@ export function Item({
 
   return (
     <li className={className}>
-      <Link href={path} className={classesMenu}>
+      <Link href={path} className={classesMenu} onClick={onClick}>
         <span className="relative z-50 lg:z-0 text-3xl lg:text-base font-semibold">{name}</span>
       </Link>
     </li>

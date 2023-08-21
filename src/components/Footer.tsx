@@ -47,7 +47,7 @@ export function Footer() {
           </div>
           <div className="col-span-12 text-center md:col-span-6 md:text-right">
             <p className="m-0 text-black text-opacity-75 dark:text-white">
-              © {new Date().getFullYear()} Copyright All Right Reserved
+              © {new Date().getFullYear()} - Todos os direitos reservados
             </p>
           </div>
         </div>

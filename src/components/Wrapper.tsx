@@ -9,8 +9,8 @@ export function Wrapper({ children }: { children: ReactNode }) {
   const shouldCloseMenuOnFocus = () => isMenuOpen ? closeMenu() : undefined;
 
   return (
-    <div onClick={shouldCloseMenuOnFocus}>
+    <>
       {children}
-    </div>
+    </>
   );
 }

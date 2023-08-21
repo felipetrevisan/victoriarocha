@@ -4,17 +4,17 @@ import { useApp } from "@/hooks/useApp";
 import { ReactNode } from "react";
 
 export function Content({ children }: { children: ReactNode }) {
-  const { isHome, isInHome } = useApp();
+  const { isInHome } = useApp();
 
   return (
     <>
-      <main className="z-30 relative">{children}</main>
-      {/* {!isHome && !isInHome() && ( */}
+      <main className="relative z-30">{children}</main>
+      {!isInHome() && (
         <>
-          <div className="bg-purple-500 pointer-events-none fixed top-14 right-0 z-20 h-[400px] w-[400px] md:lg:h-[500px] md:lg:w-[500px] rounded-full blur-[100px] opacity-50"></div>
-          <div className="bg-pink-900 pointer-events-none fixed bottom-14 left-0 z-20 h-[400px] w-[400px] md:lg:h-[500px] md:lg:w-[500px] rounded-full blur-[100px] opacity-50"></div>
+          <div className="pointer-events-none fixed right-0 top-14 z-20 h-[400px] w-[400px] rounded-full bg-purple-500 opacity-50 blur-[100px] md:lg:w-[500px] md:lg:h-[500px]"></div>
+          <div className="pointer-events-none fixed bottom-14 left-0 z-20 h-[400px] w-[400px] rounded-full bg-pink-900 opacity-50 blur-[100px] md:lg:w-[500px] md:lg:h-[500px]"></div>
         </>
-      {/* )} */}
+      )}
     </>
   );
 }

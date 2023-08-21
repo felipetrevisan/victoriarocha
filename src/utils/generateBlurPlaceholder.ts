@@ -1,5 +1,5 @@
 import imagemin from "imagemin";
-import type { ImageProps } from "@/components/Sections/Works/types";
+import type { ImageProps } from "@/components/Sections/Books/types";
 
 const cache = new Map<ImageProps, string>();
 

@@ -16,13 +16,10 @@ export default function Modal({
   const overlayRef = useRef(null);
 
   const handleClose = () => {
-    console.log("clicked on close");
     if (onClose !== undefined) {
       onClose();
     }
   };
-
-  console.log(currentVideo);
 
   return (
     <Dialog

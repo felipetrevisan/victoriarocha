@@ -30,8 +30,6 @@ export function Button({
 
   const Component = asChild ? Slot : "button";
 
-  console.log(children);
-
   return (
     <Component className={classes} disabled={disabled} {...props}>
       {selected && (

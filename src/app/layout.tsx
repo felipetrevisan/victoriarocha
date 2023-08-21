@@ -1,9 +1,10 @@
 import { Header } from "@/components/Header";
-import "./globals.css";
 import { AppProvider } from "@/hooks/useApp";
-import { Footer } from "@/components/Footer";
 import { Content } from "@/components/Content";
 import { Body } from "@/components/Body";
+import { Footer } from "@/components/Footer";
+
+import "./globals.css";
 
 export const metadata = {
   title: "Victória Rocha",

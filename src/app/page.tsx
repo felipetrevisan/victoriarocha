@@ -1,36 +1,25 @@
+"use client";
+
 import { Divider } from "@/components/Divider";
-import Books from "./books/page";
-import Home from "./home/page";
-import Release from "./release/page";
-import Videos from "./videos/page";
-import Contact from "./contact/page";
+import { Home } from "@/components/Sections/Home";
+import { Release } from "@/components/Sections/Release";
+import { Contact } from "@/components/Sections/Contact";
+import { Books } from "@/components/Sections/Books";
+import { motion } from "framer-motion";
+import { Footer } from "@/components/Footer";
 
 export default function App() {
   return (
     <>
-      <Home />
-      <div className="relative">
-        <Release />
-      </div>
-      <div className="relative">
-        <div className="relative">
-          <Divider position="top" />
-          <Divider position="bottom" />
-        </div>
-        {/* @ts-expect-error Server Component */}
-        <Books />
-      </div>
-      <div className="relative">
-        <Divider position="top" />
-        <Divider position="bottom" />
-        {/* @ts-expect-error Server Component */}
-        <Videos />
-      </div>
-      <div className="relative">
-        <Divider position="top" />
-        <Divider position="bottom" />
-        <Contact />
-      </div>
+      <motion.div
+        id="home"
+        className="section relative flex min-h-screen max-h-screen h-screen w-screen items-center justify-center"
+        initial="hide"
+        whileInView="show"
+        exit="hide"
+      >
+        <Home />
+      </motion.div>
     </>
   );
 }

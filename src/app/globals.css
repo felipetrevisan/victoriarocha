@@ -41,6 +41,12 @@ section[data-section="videos"] iframe {
   @apply rounded-lg;
 }
 
+.section {
+  scroll-snap-stop: always;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: scroll-smooth;
+}
+
 .custom-shape-divider-bottom-1687137094 {
   position: absolute;
   bottom: 0;

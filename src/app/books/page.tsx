@@ -1,51 +1,17 @@
+import { format } from "util";
 import { ListObjectsCommand, S3Client } from "@aws-sdk/client-s3";
 import { fromEnv } from "@aws-sdk/credential-providers";
 
-import { Works } from "@/components/Sections/Works";
-import { ImageProps } from "@/components/Sections/Works/types";
-import { Tabs } from "@/components/Sections/Works/Tabs";
-import { Oswald } from "next/font/google";
-import getBase64ImageUrl from "@/utils/generateBlurPlaceholder";
-// import { useApp } from "@/hooks/useApp";
-import { format } from "util";
-import { Title } from "@/components/Sections/Title";
-// import { useRouter } from "next/router";
+import { Books as Works } from "@/components/Sections/Books";
+import { ImageProps } from "@/components/Sections/Books/types";
 
-const oswald = Oswald({ subsets: ["latin"] });
+import getBase64ImageUrl from "@/utils/generateBlurPlaceholder";
+import { Title } from "@/components/Title";
 
 export default async function Books() {
-  // const refBook = useRef<HTMLDivElement>(null);
-  // const pathName = usePathname();
-  // const refBook = useRef<HTMLDivElement>(null);
-  //const router = useRouter();
-
-  // const { setCurrentSection, getSection } = useApp();
-
-  // useEffect(() => {
-  //   setCurrentSection(getSection(pathName));
-  // }, [getSection, pathName, setCurrentSection]);
-
-  //console.log(router);
-
   const s3 = new S3Client({
     region: process.env.AWS_DEFAULT_REGION,
-    // Unless you have a public bucket, you'll need access to a private bucket.
-    // One way to do this is to create an Amazon Cognito identity pool, attach a role to the pool,
-    // and grant the role access to the 's3:GetObject' action.
-    //
-    // You'll also need to configure the CORS settings on the bucket to allow traffic from
-    // this example site. Here's an example configuration that allows all origins. Don't
-    // do this in production.
-    //[
-    //  {
-    //    "AllowedHeaders": ["*"],
-    //    "AllowedMethods": ["GET"],
-    //    "AllowedOrigins": ["*"],
-    //    "ExposeHeaders": [],
-    //  },
-    //]
     credentials: fromEnv(),
-    //
   });
 
   const { Contents } = await s3.send(
@@ -94,27 +60,15 @@ export default async function Books() {
 
   return (
     <section
-      className="py-28 px-2 sm:py-16 md:py-28 min-h-screen"
-      data-section="book"
+      id="books"
+      className="section relative my-32 flex h-screen min-h-screen w-screen justify-center px-10 md:my-52 md:items-center lg:my-20 lg:items-center"
     >
-      <div className="container scroll-smooth">
-        <div className="container flex flex-col max-sm::items-center justify-center md:lg:justify-start">
+      <div className="container">
+        <div className="container flex flex-col justify-center max-sm:items-center md:lg:justify-start">
           <div className="flex flex-wrap items-center justify-center">
             <Title content="Books" />
           </div>
-          {/* <div className="lg:w-3/4 mx-auto">
-            <Title content="Books" /> */}
-            {/* {currentViewPhoto && (
-              <Modal
-                images={reduceImages}
-                onClose={() => {
-                  setLastViewedPhoto(+currentViewPhoto);
-                }}
-              />
-            )} */}
-
-            <Works images={reduceImages} itemsPerPage={8} />
-          {/* </div> */}
+          <Works images={reduceImages} itemsPerPage={8} />
         </div>
       </div>
     </section>
