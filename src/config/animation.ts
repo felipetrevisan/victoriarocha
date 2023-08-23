@@ -19,20 +19,39 @@ export const galleryVariants = {
   },
 };
 
+export const menuMobileVariants: Variants = {
+  closed: {
+    transition: {
+      staggerChildren: 0.2,
+      staggerDirection: -1,
+    },
+    visibility: "hidden",
+    opacity: 0
+  },
+  open: {
+    transition: {
+      staggerChildren: 0.2,
+      staggerDirection: 1,
+    },
+    visibility: "visible",
+    opacity: 1
+  },
+};
+
 export const slideUpVariants: Variants = {
   initial: {
     opacity: 0,
-    y: 50
+    y: 50,
   },
   animate: {
     opacity: 1,
     y: 0,
     transition: {
       delay: 0.5,
-      duration: 1
-    }
-  }
-}
+      duration: 1,
+    },
+  },
+};
 
 export const headerVariants: Variants = {
   hide: {

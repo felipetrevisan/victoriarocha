@@ -18,9 +18,9 @@ export default async function Videos() {
   return (
     <section
       id="videos"
-      className="section relative my-32 flex min-h-screen justify-center"
+      className="section relative my-32 flex lg:items-center justify-center"
     >
-      <div className="container flex flex-col justify-center max-sm:items-center md:lg:justify-start">
+      <div className="container flex flex-col justify-center md:justify-start lg:justify-start">
         <Content data={videos.data} itemsPerPage={12} />
       </div>
     </section>

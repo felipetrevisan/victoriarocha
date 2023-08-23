@@ -3,39 +3,37 @@
 import { useLayoutEffect } from "react";
 import { Oswald } from "next/font/google";
 import clsx from "clsx";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Instagram, Facebook, Youtube } from "lucide-react";
 
 import { useApp } from "@/hooks/useApp";
 import useKeyPress from "@/hooks/useKeyPress";
-import { headerVariants } from "@/config/animation";
+import { headerVariants, menuMobileVariants } from "@/config/animation";
 import { Menu } from "./Menu";
 
 const oswald = Oswald({ subsets: ["latin"] });
 
 export function Header() {
-  const { openMenu, closeMenu, isMenuOpen, isInHome } = useApp();
+  const { setIsMenuOpen, isMenuOpen, isInHome } = useApp();
   const escPressed: boolean = useKeyPress("Escape");
 
   useLayoutEffect(() => {
     if (escPressed) {
-      if (isMenuOpen) closeMenu();
-      if (!isMenuOpen) openMenu();
+      setIsMenuOpen();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [escPressed]);
 
   const classes = clsx(
-    "fixed select-none left-0 right-0 top-0 w-full flex items-center justify-between px-32 py-4 z-[100] lg:px-16 md:px-12 sm:px-8 shadow-black lg:backdrop-blur-xl",
+    "fixed select-none left-0 right-0 top-0 w-full flex items-center justify-between px-5 lg:px-32 py-4 z-[100] lg:px-16 md:px-12 shadow-black lg:backdrop-blur-xl",
     {
       "border border-black/5 lg:backdrop-blur-md lg:bg-black/20": isInHome(),
-      "backdrop-blur-md bg-black/70 lg:bg-black/70 lg:rounded-none lg:mx-0 lg:px-0 px-0":
+      "backdrop-blur-md bg-black/70 lg:bg-black/70 lg:rounded-none":
         !isInHome(),
     }
   );
 
   return (
-    <>
+    <AnimatePresence>
       <motion.header
         className={classes}
         initial="hide"
@@ -56,16 +54,47 @@ export function Header() {
             className="flex flex-col items-center justify-center lg:hidden"
             aria-controls="mobile-menu"
             aria-expanded="false"
-            onClick={isMenuOpen ? closeMenu : openMenu}
+            onClick={setIsMenuOpen}
           >
             <span className="sr-only">Open main menu</span>
-            <span className={`block h-0.5 w-6 rounded-sm bg-white transition-all duration-300 ease-out ${isMenuOpen ? 'rotate-45 translate-y-1' : '-translate-y-0.5' }`}></span>
-            <span className={`my-0.5 block h-0.5 w-6 rounded-sm bg-white transition-all duration-300 ease-out ${isMenuOpen ? 'opacity-0' : 'opacity-100' }`}></span>
-            <span className={`block h-0.5 w-6 rounded-sm bg-white transition-all duration-300 ease-out ${isMenuOpen ? '-rotate-45 -translate-y-1' : 'translate-y-0.5' }`}></span>
+            <span
+              className={`block h-0.5 w-6 rounded-sm bg-white transition-all duration-300 ease-out ${
+                isMenuOpen ? "translate-y-1 rotate-45" : "-translate-y-0.5"
+              }`}
+            ></span>
+            <span
+              className={`my-0.5 block h-0.5 w-6 rounded-sm bg-white transition-all duration-300 ease-out ${
+                isMenuOpen ? "opacity-0" : "opacity-100"
+              }`}
+            ></span>
+            <span
+              className={`block h-0.5 w-6 rounded-sm bg-white transition-all duration-300 ease-out ${
+                isMenuOpen ? "-translate-y-1 -rotate-45" : "translate-y-0.5"
+              }`}
+            ></span>
           </button>
           <motion.div className="hidden items-center justify-center lg:flex">
             <Menu isOpen={false} />
           </motion.div>
+          {isMenuOpen && (
+            <motion.div
+              className="absolute z-[1045] min-h-screen flex justify-center lg:hidden backdrop-blur-2xl bg-black/90"
+              initial={{ width: 0, top: 0, right: 0 }}
+              animate={{
+                width: 300,
+                top: 50,
+                right: 0
+              }}
+              exit={{
+                width: 0,
+                top: 0,
+                right: -100,
+                transition: { delay: 0.7, duration: 0.3 },
+              }}
+            >
+              <Menu isOpen={isMenuOpen} />
+            </motion.div>
+          )}
           <motion.div
             className="hidden flex-wrap items-center justify-center lg:mt-2 lg:flex"
             initial={{ opacity: 0 }}
@@ -100,9 +129,6 @@ export function Header() {
           </motion.div>
         </div>
       </motion.header>
-      <div className="flex lg:hidden">
-        <Menu isOpen={isMenuOpen} />
-      </div>
-    </>
+    </AnimatePresence>
   );
 }

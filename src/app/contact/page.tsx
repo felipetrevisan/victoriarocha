@@ -7,7 +7,7 @@ export default function Contact() {
   return (
     <motion.section
       id="contact"
-      className="section relative flex items-center justify-center my-32"
+      className="section relative my-32 flex lg:items-center justify-center"
       initial="hide"
       whileInView="show"
       exit="hide"
