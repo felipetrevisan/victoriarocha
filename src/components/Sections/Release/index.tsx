@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 import { useApp } from "@/hooks/useApp";
-import { releaseAvatarVariants } from "@/utils/animation";
+import { opacityVariants } from "@/config/animation";
 import { TransitionEffect } from "@/components/TransitionEffect";
 import { Title } from "@/components/Title";
 import { SocialNetworks } from "@/components/SocialNetworks";
@@ -38,7 +38,7 @@ export function Release() {
                   className="group relative h-[300px] w-[300px] max-w-[300px] rounded-full md:h-[400px] md:w-[400px] md:max-w-[400px] lg:h-[400px] lg:w-[400px] lg:max-w-[400px]"
                   initial="initial"
                   animate="animate"
-                  variants={releaseAvatarVariants}
+                  variants={opacityVariants}
                 >
                   <Image
                     className="h-[300px] w-[300px] md:h-[400px] md:w-[400px] lg:h-[400px] lg:w-[400px]"
@@ -53,7 +53,7 @@ export function Release() {
                   initial="hide"
                   whileInView="show"
                   exit="hide"
-                  variants={releaseAvatarVariants}
+                  variants={opacityVariants}
                 >
                   <SocialNetworks />
                 </motion.div>

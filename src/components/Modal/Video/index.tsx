@@ -1,8 +1,9 @@
 "use client";
 
+import { useRef } from "react";
 import { Dialog } from "@headlessui/react";
 import { motion } from "framer-motion";
-import { useRef } from "react";
+
 import type { Video } from "@/types/videos";
 import SharedModal from "./shared";
 

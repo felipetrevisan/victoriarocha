@@ -2,6 +2,8 @@
 
 import clsx from "clsx";
 import React, { memo } from "react";
+
+import { PaginationConfig } from "@/config/pagination";
 import type { Sizes } from "@/types/size";
 import { PaginationItem } from "./item";
 
@@ -9,9 +11,8 @@ interface Props {
   isPrev?: boolean;
   disabled?: boolean;
   onlyDots?: boolean;
-  animated?: boolean;
-  bordered?: boolean;
   position: "vertical" | "horizontal";
+  config: PaginationConfig;
   onClick?: (e: React.MouseEvent) => void;
 }
 
@@ -23,10 +24,9 @@ function PaginationIcon({
   isPrev = false,
   disabled,
   onlyDots,
-  animated,
-  bordered,
   size,
   position = "vertical",
+  config,
   onClick,
   ...props
 }: PaginationIconProps) {
@@ -45,11 +45,10 @@ function PaginationIcon({
   return (
     <PaginationItem
       preserveContent
-      animated={animated}
-      bordered={bordered}
       disabled={disabled}
       onlyDots={onlyDots}
       value={isPrev ? "<" : ">"}
+      config={config}
       onClick={(e) => onClick && onClick(e)}
     >
       <svg

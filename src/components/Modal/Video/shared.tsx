@@ -1,7 +1,8 @@
 import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import { X } from "lucide-react";
 import ReactPlayer from "react-player";
-import { variants } from "@/utils/animation";
+
+import { galleryVariants } from "@/config/animation";
 import type { Video } from "@/types/videos";
 
 type SharedModalProps = {
@@ -33,7 +34,7 @@ export default function SharedModal({
             <AnimatePresence initial={false}>
               <motion.div
                 key={currentVideo.uri}
-                variants={variants}
+                variants={galleryVariants}
                 initial="enter"
                 animate="center"
                 exit="exit"

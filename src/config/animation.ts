@@ -1,6 +1,6 @@
 import { Variants } from "framer-motion";
 
-export const variants = {
+export const galleryVariants = {
   enter: (direction: number) => {
     return {
       x: direction > 0 ? 1000 : -1000,
@@ -48,7 +48,7 @@ export const headerVariants: Variants = {
   },
 };
 
-export const releaseAvatarVariants: Variants = {
+export const opacityVariants: Variants = {
   inital: {
     opacity: 0,
   },

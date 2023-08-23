@@ -1,52 +1,33 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { KeenSliderOptions, useKeenSlider } from "keen-slider/react";
+import { AnimatePresence, motion } from "framer-motion";
 
 import type { Video, VideosResponse } from "@/types/videos";
 
 import { useApp } from "@/hooks/useApp";
+import { opacityVariants } from "@/config/animation";
 import Modal from "@/components/Modal/Video";
 import { Title } from "@/components/Title";
 import { TransitionEffect } from "@/components/TransitionEffect";
 
-import "keen-slider/keen-slider.min.css";
+interface Props extends VideosResponse {
+  itemsPerPage: number;
+};
 
-type Props = VideosResponse;
-
-export function Videos({ data }: Props) {
+export function Videos({ data, itemsPerPage }: Props) {
   const { setCurrentSection, getSection } = useApp();
 
   const refVideos = useRef<HTMLDivElement>(null);
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [loaded, setLoaded] = useState(false);
+  const [totalPages, setTotalPages] = useState(0);
   const [currentVideo, setCurrentVideo] = useState<Video>({} as Video);
+  const [page, setPage] = useState(1);
 
-  const options = useMemo<KeenSliderOptions>(() => {
-    return {
-      breakpoints: {
-        "(min-width: 400px)": {
-          slides: { perView: 2, spacing: 15 },
-        },
-        "(min-width: 1000px)": {
-          slides: { perView: 3, spacing: 15 },
-        },
-      },
-      slides: { perView: 3, spacing: 15 },
-      initial: 0,
-      slideChanged(slider) {
-        setCurrentSlide(slider.track.details.rel);
-      },
-      created() {
-        setLoaded(true);
-      },
-    };
-  }, []);
+  useEffect(() => {
+    setTotalPages(Math.ceil(data.length / itemsPerPage));
+  }, [data.length, itemsPerPage]);
 
-  const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>(options);
-  
   const showVideo = (video: Video) => {
     setCurrentVideo(video);
   };
@@ -66,13 +47,50 @@ export function Videos({ data }: Props) {
         exit={{ opacity: [0, 1] }}
         transition={{ delay: 0.4, duration: 0.8, ease: "easeInOut" }}
       >
+        <div className="flex flex-wrap items-center justify-center">
+          <Title content="Vídeos" />
+        </div>
         {currentVideo?.player_embed_url && (
           <Modal
             currentVideo={currentVideo}
             onClose={() => setCurrentVideo({} as Video)}
           />
         )}
-        <div className="max-sm::items-center container flex flex-col justify-center md:lg:justify-start">
+        <div className="flex flex-row gap-7 md:flex-col">
+          <AnimatePresence>
+            <div className="relative w-full overflow-hidden">
+              <div className="columns-3 gap-4 lg:columns-4 xl:columns-4 2xl:columns-4">
+                {data.slice((page - 1) * +itemsPerPage, page * +itemsPerPage).map((video) => (
+                  <motion.div
+                    key={video.uri}
+                    className="after:content after:shadow-highlight group relative mb-5 block w-full cursor-zoom-in transition after:pointer-events-none after:absolute after:inset-0 after:rounded-lg"
+                    onClick={() => showVideo(video)}
+                    initial="hide"
+                    whileInView="show"
+                    exit="hide"
+                    variants={opacityVariants}
+                  >
+                    <Image
+                      className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
+                      style={{ transform: "translate3d(0, 0, 0)" }}
+                      placeholder="blur"
+                      blurDataURL={video.pictures.base_link!}
+                      src={video.pictures.base_link!}
+                      alt={video.name}
+                      width={720}
+                      height={480}
+                      sizes="(max-width: 640px) 100vw,
+                  (max-width: 1280px) 50vw,
+                  (max-width: 1536px) 33vw,
+                  50vw"
+                    />
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </AnimatePresence>
+        </div>
+        {/* <div className="container flex flex-col justify-center md:lg:justify-start">
           <div className="flex flex-wrap items-center justify-center">
             <Title content="Vídeos" />
           </div>
@@ -116,33 +134,9 @@ export function Videos({ data }: Props) {
                   })}
                 </div>
               )}
-              {/* {loaded && instanceRef.current && (
-              <>
-                {currentSlide !== 0 && (
-                  <ChevronLeft
-                    size={72}
-                    className="absolute top-1/2 -translate-y-1/2 cursor-pointer -left-16"
-                    onClick={(e: any) =>
-                      e.stopPropagation() || instanceRef.current?.prev()
-                    }
-                  />
-                )}
-
-                {currentSlide !==
-                  instanceRef.current.track.details.slides.length - 1 && (
-                  <ChevronRight
-                    size={72}
-                    className="absolute top-1/2 -translate-y-1/2 cursor-pointer left-auto -right-16"
-                    onClick={(e: any) =>
-                      e.stopPropagation() || instanceRef.current?.next()
-                    }
-                  />
-                )}
-              </>
-            )} */}
             </div>
           </div>
-        </div>
+        </div> */}
       </motion.div>
     </>
   );

@@ -1,11 +1,12 @@
-import { AnimatePresence, motion, MotionConfig } from "framer-motion";
-import Image from "next/image";
 import { useState } from "react";
+import Image from "next/image";
+import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import { useSwipeable } from "react-swipeable";
+import { ArrowLeft, ChevronLeft, ChevronRight, X } from "lucide-react";
+
 import type { ImageProps, SharedModalProps } from "../types";
 import { range } from "@/utils/numbers";
-import { variants } from "@/utils/animation";
-import { ArrowLeft, ChevronLeft, ChevronRight, X } from "lucide-react";
+import { galleryVariants } from "@/config/animation";
 
 export default function SharedModal({
   index,
@@ -46,17 +47,17 @@ export default function SharedModal({
       }}
     >
       <div
-        className="relative z-50 flex aspect-[1/1] w-full max-w-7xl items-center"
+        className="relative z-50 flex aspect-[3/2] w-full max-w-7xl items-center wide:h-full xl:taller-than-854:h-auto"
         {...handlers}
       >
         {/* Main image */}
         <div className="w-full overflow-hidden">
-          <div className="relative flex aspect-[1/1] items-center justify-center">
+          <div className="relative flex aspect-[3/2] items-center justify-center">
             <AnimatePresence initial={false} custom={direction}>
               <motion.div
                 key={index}
                 custom={direction}
-                variants={variants}
+                variants={galleryVariants}
                 initial="enter"
                 animate="center"
                 exit="exit"
@@ -83,7 +84,7 @@ export default function SharedModal({
         <div className="absolute inset-0 mx-auto flex max-w-7xl items-center justify-center">
           {/* Buttons */}
           {loaded && (
-            <div className="relative aspect-[1/1] max-h-full w-full">
+            <div className="relative aspect-[3/2] max-h-full w-full">
               {navigation && (
                 <>
                   {index > 0 && (

@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 import { DownloadIcon, MailIcon } from "lucide-react";
 import { TransitionEffect } from "@/components/TransitionEffect";
 import { useApp } from "@/hooks/useApp";
-import { slideUpVariants } from "@/utils/animation";
+import { slideUpVariants } from "@/config/animation";
 
 const oswald = Oswald({ subsets: ["latin"] });
 

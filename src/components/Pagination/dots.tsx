@@ -1,31 +1,33 @@
 import React, { useState } from "react";
+
+import { PaginationConfig } from "@/config/pagination";
 import { PaginationItem } from "./item";
 
 interface Props {
   value?: string | number;
+  index: number;
   isBefore?: boolean;
-  animated?: boolean;
-  bordered?: boolean;
   onlyDots?: boolean;
+  config: PaginationConfig;
   onClick?: (e: React.MouseEvent) => void;
 }
 
 export function PaginationDots({
   value,
+  index,
   isBefore,
-  animated,
-  bordered,
   onlyDots,
+  config,
   onClick,
 }: Props) {
   const [showMore, setShowMore] = useState(false);
 
   return (
     <PaginationItem
-      animated={animated}
-      bordered={bordered}
       onlyDots={onlyDots}
       value={value}
+      index={index}
+      config={config}
       onClick={(e: React.MouseEvent) => onClick && onClick(e)}
       onMouseEnter={() => setShowMore(true)}
       onMouseLeave={() => setShowMore(false)}
@@ -34,9 +36,9 @@ export function PaginationDots({
         <div
           className="pagination-dots w-5 h-5 rounded-full bg-red-500"
           role="presentation"
-        ></div>
+        />
       ) : (
-        <div className="pagination-dots w-5 h-5 rounded-full bg-red-500"></div>
+        <div className="pagination-dots w-5 h-5 rounded-full bg-red-500" />
       )}
     </PaginationItem>
   );

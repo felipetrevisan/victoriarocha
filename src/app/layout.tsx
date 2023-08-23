@@ -21,9 +21,11 @@ export default function RootLayout({
     <html lang="en">
       <AppProvider>
         <Body>
+          <Content>
           <Header />
-          <Content>{children}</Content>
-          <Footer />
+            {children}
+            <Footer />
+          </Content>
         </Body>
       </AppProvider>
     </html>

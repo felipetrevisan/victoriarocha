@@ -1,5 +1,5 @@
+import React, { useMemo, useEffect, useState } from "react";
 import clsx from "clsx";
-import React, {useMemo, useEffect, useState} from "react";
 
 interface Props {
   active: number;
@@ -40,23 +40,20 @@ export function PaginationHighlight({
       noMargin
         ? `2.5rem * ${selfActive}`
         : `2.5rem * ${selfActive} + ${selfActive * 4 + 2}px`,
-    [selfActive, noMargin],
+    [selfActive, noMargin]
   );
 
-  const classes = clsx('pagination-highlight animate-dot absolute top-0 z-[100] bg-red-600 rounded-full h-[1.75rem] min-w-[1.75rem] duration-300 ease-in [transition:left_350ms_ease_in_0s,transform_300ms_ease_in_0s] animate-pagination', moveClassName, {
-    // 'pagination-highlight--rounded': rounded,
-    // 'pagination-highlight--active': active,
-    // 'pagination-highlight--no-margin rounded-none': noMargin,
-    // 'pagination-highlight--shadow': shadow,
-  });
+  const classes = clsx(
+    "pagination-highlight animate-dot absolute top-0 z-[100] bg-red-600 rounded-full h-[1.75rem] min-w-[1.75rem] duration-300 ease-in [transition:left_350ms_ease_in_0s,transform_300ms_ease_in_0s] animate-pagination",
+    moveClassName,
+    {}
+  );
 
   return (
     <div
       aria-hidden={true}
       className={classes}
-      style={{ left: `calc(${leftValue})`}}
-      // css={{left: "var(--nextui--paginationLeft)", ...css}}
-      //style={mergeProps({"--nextui--paginationLeft": `calc(${leftValue})`}, props?.style || {})}
+      style={{ left: `calc(${leftValue})` }}
       {...props}
     />
   );

@@ -61,15 +61,10 @@ export default async function Books() {
   return (
     <section
       id="books"
-      className="section relative my-32 flex h-screen min-h-screen w-screen justify-center px-10 md:my-52 md:items-center lg:my-20 lg:items-center"
+      className="section relative my-32 flex min-h-screen justify-center"
     >
-      <div className="container">
-        <div className="container flex flex-col justify-center max-sm:items-center md:lg:justify-start">
-          <div className="flex flex-wrap items-center justify-center">
-            <Title content="Books" />
-          </div>
-          <Works images={reduceImages} itemsPerPage={8} />
-        </div>
+      <div className="container flex flex-col justify-center max-sm:items-center md:lg:justify-start">
+        <Works images={reduceImages} itemsPerPage={20} />
       </div>
     </section>
   );
