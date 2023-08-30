@@ -14,7 +14,7 @@ export function MenuTop({ sections, current, type, className = "" }: Props) {
   return (
     <div className={className}>
       <nav className="flex items-center justify-between py-4 px-2">
-        <ul className="navbar flex flex-col p-4 lg:mx-auto lg:flex-row lg:p-0">
+        <ul className="navbar flex flex-col p-4 wide:mx-auto wide:flex-row wide:p-0">
           {sections.map((section) => {
             return (
               <Item

@@ -1,6 +1,5 @@
 import { Videos as Content } from "@/components/Sections/Videos";
-import { VideosResponse } from "@/types/videos";
-import getBase64ImageUrl from "@/utils/generateBlurPlaceholder";
+import type { VideosResponse } from "@/types";
 
 export default async function Videos() {
   const videosResponse = await fetch(
@@ -13,15 +12,22 @@ export default async function Videos() {
     }
   );
 
-  const videos: VideosResponse = await videosResponse.json();
-
+  const videosJson: VideosResponse = await videosResponse.json();
+  let index = 0;
+  const videos = videosJson.data.map(video => {
+    return {
+      ...video,
+      id: index++
+    }
+  })
+  
   return (
     <section
       id="videos"
-      className="section relative my-32 flex lg:items-center justify-center"
+      className="section relative my-32 flex wide:items-center justify-center"
     >
-      <div className="container flex flex-col justify-center md:justify-start lg:justify-start">
-        <Content data={videos.data} itemsPerPage={12} />
+      <div className="container flex flex-col justify-center md:justify-start wide:justify-start">
+        <Content data={videos} itemsPerPage={12} />
       </div>
     </section>
   );

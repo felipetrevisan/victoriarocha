@@ -8,12 +8,11 @@ import { useApp } from "@/hooks/useApp";
 import { TransitionEffect } from "@/components/TransitionEffect";
 import { Title } from "@/components/Title";
 import { opacityVariants } from "@/config/animation";
-import Modal from "./Modal";
-import { Header } from "./Header";
-import type { ImageProps } from "./types";
+import Modal from "@/components/Modal/Books";
+import type { Image as ImageType } from "@/types";
 
 interface Props {
-  images: ImageProps[];
+  images: ImageType[];
   itemsPerPage: number;
 }
 
@@ -22,7 +21,7 @@ export function Books({ images, itemsPerPage = 6 }: Props) {
 
   const refBooks = useRef<HTMLDivElement>(null);
   const [totalPages, setTotalPages] = useState(0);
-  const [currentPhoto, setCurrentPhoto] = useState<ImageProps | undefined>(
+  const [currentPhoto, setCurrentPhoto] = useState<ImageType | undefined>(
     undefined
   );
   const [page, setPage] = useState(1);
@@ -39,7 +38,7 @@ export function Books({ images, itemsPerPage = 6 }: Props) {
     setCurrentSection(getSection("/books"));
   }, [getSection, setCurrentSection]);
 
-  const showPhoto = (photo: ImageProps) => {
+  const showPhoto = (photo: ImageType) => {
     setCurrentPhoto(photo);
   };
 
@@ -58,16 +57,15 @@ export function Books({ images, itemsPerPage = 6 }: Props) {
           <Title content="Books" />
         </div>
         {currentPhoto !== undefined && (
-          <Modal images={images} onClose={() => setCurrentPhoto(undefined)} />
+          <Modal images={images} currentPhoto={currentPhoto} onClose={() => setCurrentPhoto(undefined)} />
         )}
-        <Header totalPages={totalPages} setPage={setPage} />
         <div className="flex flex-row gap-7 md:flex-col">
           <AnimatePresence>
-            <div className="relative w-full overflow-hidden">
-              <div className="columns-3 gap-4 lg:columns-4 xl:columns-4 2xl:columns-4">
+            <div className="overflow-hidden rounded-2xl border border-solid border-black/[0.1] bg-white/[0.1] p-6 backdrop-blur-xl backdrop-saturate-[180deg]">
+              <div className="columns-2 gap-4 wide:columns-3 xl:columns-3 2xl:columns-3">
                 {images
                   .slice((page - 1) * +itemsPerPage, page * +itemsPerPage)
-                  .map((photo: ImageProps) => (
+                  .map((photo: ImageType) => (
                     <motion.div
                       key={photo.id}
                       className="after:content after:shadow-highlight group relative mb-5 block w-full cursor-zoom-in transition after:pointer-events-none after:absolute after:inset-0 after:rounded-lg"
@@ -84,8 +82,8 @@ export function Books({ images, itemsPerPage = 6 }: Props) {
                         placeholder="blur"
                         blurDataURL={photo.blurDataUrl!}
                         src={photo.url!}
-                        width={720}
-                        height={480}
+                        width={520}
+                        height={280}
                         sizes="(max-width: 640px) 100vw,
                   (max-width: 1280px) 50vw,
                   (max-width: 1536px) 33vw,

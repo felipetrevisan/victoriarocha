@@ -2,15 +2,15 @@
 
 import Image from "next/image";
 import { useApp } from "@/hooks/useApp";
-import type { ImageProps } from "../types";
-import SharedModal from "../Modal/shared";
+import SharedModal from "@/components/Modal/Books/shared";
+import type { Image as ImageType } from "@/types";
 
 export default function Carousel({
   index,
   currentPhoto,
 }: {
   index: number;
-  currentPhoto: ImageProps;
+  currentPhoto: ImageType;
 }) {
   const { setLastViewedPhoto } = useApp();
 
@@ -38,8 +38,8 @@ export default function Carousel({
       </button>
       <SharedModal
         index={index}
-        changePhotoId={changePhotoId}
-        currentPhoto={currentPhoto}
+        changeItemId={changePhotoId}
+        currentItem={currentPhoto}
         closeModal={closeModal}
         navigation={false}
       />

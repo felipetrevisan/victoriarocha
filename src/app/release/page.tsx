@@ -7,7 +7,7 @@ export default function Release() {
   return (
     <motion.section
       id="release"
-      className="section relative my-32 flex lg:items-center justify-center"
+      className="section relative my-32 flex wide:items-center justify-center"
       initial="hide"
       whileInView="show"
       exit="hide"

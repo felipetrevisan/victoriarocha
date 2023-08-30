@@ -3,10 +3,8 @@ import { ListObjectsCommand, S3Client } from "@aws-sdk/client-s3";
 import { fromEnv } from "@aws-sdk/credential-providers";
 
 import { Books as Works } from "@/components/Sections/Books";
-import { ImageProps } from "@/components/Sections/Books/types";
-
 import getBase64ImageUrl from "@/utils/generateBlurPlaceholder";
-import { Title } from "@/components/Title";
+import type { Image } from "@/types";
 
 export default async function Books() {
   const s3 = new S3Client({
@@ -15,13 +13,13 @@ export default async function Books() {
   });
 
   const { Contents } = await s3.send(
-    new ListObjectsCommand({ Bucket: "victoriarocha" })
+    new ListObjectsCommand({ Bucket: process.env.AWS_BUCKET_NAME })
   );
 
   const results = Contents!;
 
   const reducedImages = () => {
-    let reducedResults: ImageProps[] = [];
+    let reducedResults: Image[] = [];
 
     let index = 0;
 
@@ -32,7 +30,7 @@ export default async function Books() {
           key: result.ETag?.replaceAll('"', ""),
           url: format(
             process.env.AWS_S3_OBJECT_URL,
-            "victoriarocha",
+            process.env.AWS_BUCKET_NAME,
             process.env.AWS_DEFAULT_REGION,
             result.Key
           ),
@@ -61,9 +59,9 @@ export default async function Books() {
   return (
     <section
       id="books"
-      className="section relative my-32 flex lg:items-center justify-center"
+      className="section relative my-32 flex wide:items-center justify-center"
     >
-      <div className="container flex flex-col justify-center md:justify-start lg:justify-start">
+      <div className="container flex flex-col justify-center md:justify-start wide:justify-start">
         <Works images={reduceImages} itemsPerPage={20} />
       </div>
     </section>

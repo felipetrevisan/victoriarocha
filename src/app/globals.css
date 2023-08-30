@@ -28,10 +28,6 @@ body {
     rgb(var(--background-start-rgb));
 }
 
-/* .container {
-  @apply z-50 w-full mx-auto 2xl:max-w-[1400px] xl:max-w-[1280px] lg:max-w-[1024px] md:max-w-[768px] max-w-[640px];
-} */
-
 .container {
   @apply z-50 w-[min(100%-3rem,100ch)];
   margin-inline: auto;

@@ -1,23 +1,23 @@
 "use client";
 
+import { useRef, useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { motion } from "framer-motion";
-import { useRef, useState } from "react";
-import type { ImageProps } from "../types";
 import SharedModal from "./shared";
-import { useApp } from "@/hooks/useApp";
+import type { Image } from "@//types";
 
 export default function Modal({
   images,
+  currentPhoto,
   onClose,
 }: {
-  images: ImageProps[];
+  images: Image[];
+  currentPhoto: Image;
   onClose?: () => void;
 }) {
-  const { currentViewPhoto, setCurrentViewPhoto } = useApp();
   let overlayRef = useRef(null);
 
-  let index = Number(currentViewPhoto);
+  let index = Number(currentPhoto.id);
 
   const [direction, setDirection] = useState(0);
   const [curIndex, setCurIndex] = useState(index);
@@ -34,7 +34,6 @@ export default function Modal({
     }
 
     setCurIndex(newVal);
-    setCurrentViewPhoto(newVal);
   }
 
   return (
@@ -56,8 +55,8 @@ export default function Modal({
       <SharedModal
         index={curIndex}
         direction={direction}
-        images={images}
-        changePhotoId={changePhotoId}
+        items={images}
+        changeItemId={changePhotoId}
         closeModal={handleClose}
         navigation={true}
       />

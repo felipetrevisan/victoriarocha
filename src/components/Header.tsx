@@ -14,20 +14,20 @@ import { Menu } from "./Menu";
 const oswald = Oswald({ subsets: ["latin"] });
 
 export function Header() {
-  const { setIsMenuOpen, isMenuOpen, isInHome } = useApp();
+  const { toogleMenu, isMenuOpen, isInHome } = useApp();
   const escPressed: boolean = useKeyPress("Escape");
 
   useLayoutEffect(() => {
     if (escPressed) {
-      setIsMenuOpen();
+      toogleMenu();
     }
   }, [escPressed]);
 
   const classes = clsx(
-    "fixed select-none left-0 right-0 top-0 w-full flex items-center justify-between px-5 lg:px-32 py-4 z-[100] lg:px-16 md:px-12 shadow-black lg:backdrop-blur-xl",
+    "fixed select-none left-0 right-0 top-0 w-full flex items-center justify-between px-5 wide:px-32 py-4 z-[100] wide:px-16 md:px-12 shadow-black backdrop-blur-xl",
     {
-      "border border-black/5 lg:backdrop-blur-md lg:bg-black/20": isInHome(),
-      "backdrop-blur-md bg-black/70 lg:bg-black/70 lg:rounded-none":
+      "border border-black/5 backdrop-blur-md bg-black/20": isInHome(),
+      "backdrop-blur-md bg-black/70 wide:rounded-none":
         !isInHome(),
     }
   );
@@ -44,45 +44,45 @@ export function Header() {
         <div className="flex w-full items-center justify-between">
           <div className="logo">
             <h2
-              className={`${oswald.className} text-2xl text-white md:text-3xl lg:text-4xl`}
+              className={`${oswald.className} text-2xl text-white md:text-3xl wide:text-4xl`}
             >
               Victória Rocha
             </h2>
           </div>
           <button
             type="button"
-            className="flex flex-col items-center justify-center lg:hidden"
+            className="flex flex-col items-center justify-center wide:hidden"
             aria-controls="mobile-menu"
             aria-expanded="false"
-            onClick={setIsMenuOpen}
+            onClick={toogleMenu}
           >
             <span className="sr-only">Open main menu</span>
             <span
               className={`block h-0.5 w-6 rounded-sm bg-white transition-all duration-300 ease-out ${
-                isMenuOpen ? "translate-y-1 rotate-45" : "-translate-y-0.5"
+                isMenuOpen ? "translate-y-1 rotate-45 z-[1046]" : "-translate-y-0.5"
               }`}
             ></span>
             <span
               className={`my-0.5 block h-0.5 w-6 rounded-sm bg-white transition-all duration-300 ease-out ${
-                isMenuOpen ? "opacity-0" : "opacity-100"
+                isMenuOpen ? "opacity-0 z-[1046]" : "opacity-100"
               }`}
             ></span>
             <span
               className={`block h-0.5 w-6 rounded-sm bg-white transition-all duration-300 ease-out ${
-                isMenuOpen ? "-translate-y-1 -rotate-45" : "translate-y-0.5"
+                isMenuOpen ? "-translate-y-1 -rotate-45 z-[1046]" : "translate-y-0.5"
               }`}
             ></span>
           </button>
-          <motion.div className="hidden items-center justify-center lg:flex">
+          <motion.div className="hidden items-center justify-center wide:flex">
             <Menu isOpen={false} />
           </motion.div>
           {isMenuOpen && (
             <motion.div
-              className="absolute z-[1045] min-h-screen flex justify-center lg:hidden backdrop-blur-2xl bg-black/90"
+              className="absolute z-[1045] min-h-screen flex justify-center wide:hidden backdrop-blur-3xl bg-black"
               initial={{ width: 0, top: 0, right: 0 }}
               animate={{
                 width: 300,
-                top: 50,
+                top: 0,
                 right: 0
               }}
               exit={{
@@ -96,7 +96,7 @@ export function Header() {
             </motion.div>
           )}
           <motion.div
-            className="hidden flex-wrap items-center justify-center lg:mt-2 lg:flex"
+            className="hidden flex-wrap items-center justify-center wide:mt-2 wide:flex"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: [0, 1] }}

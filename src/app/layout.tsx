@@ -22,7 +22,7 @@ export default function RootLayout({
       <AppProvider>
         <Body>
           <Content>
-          <Header />
+            <Header />
             {children}
             <Footer />
           </Content>

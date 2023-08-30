@@ -31,17 +31,17 @@ export function Release() {
         transition={{ delay: 0.4, duration: 0.8, ease: "easeInOut" }}
       >
         <div className="container">
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
-            <div className="relative flex place-items-center justify-center md:col-span-5 lg:col-span-6">
-              <div className="relative m-auto mx-auto max-w-[400px] overflow-hidden rounded-full lg:sticky lg:top-[120px]">
+          <div className="grid grid-cols-1 gap-6 wide:grid-cols-12">
+            <div className="relative flex place-items-center justify-center md:col-span-5 wide:col-span-6">
+              <div className="relative m-auto mx-auto max-w-[400px] overflow-hidden rounded-full wide:sticky wide:top-[120px]">
                 <motion.div
-                  className="group relative h-[300px] w-[300px] max-w-[300px] rounded-full md:h-[400px] md:w-[400px] md:max-w-[400px] lg:h-[400px] lg:w-[400px] lg:max-w-[400px]"
+                  className="group relative h-[300px] w-[300px] max-w-[300px] rounded-full md:h-[400px] md:w-[400px] md:max-w-[400px] wide:h-[400px] wide:w-[400px] wide:max-w-[400px]"
                   initial="initial"
                   animate="animate"
                   variants={opacityVariants}
                 >
                   <Image
-                    className="h-[300px] w-[300px] md:h-[400px] md:w-[400px] lg:h-[400px] lg:w-[400px]"
+                    className="h-[300px] w-[300px] md:h-[400px] md:w-[400px] wide:h-[400px] wide:w-[400px]"
                     src="/assets/profile-release.png"
                     alt="Foto"
                     fill
@@ -59,7 +59,7 @@ export function Release() {
                 </motion.div>
               </div>
             </div>
-            <div className="pt-lg-0 pt-5 md:col-span-7 lg:col-span-6">
+            <div className="pt-lg-0 pt-5 md:col-span-7 wide:col-span-6">
               <div>
                 <div>
                   <Title content="Release" />

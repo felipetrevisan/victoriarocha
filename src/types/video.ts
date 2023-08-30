@@ -3,8 +3,10 @@ export type VideosResponse = {
 };
 
 export type Video = {
+  id: number;
   uri: string;
   name: string;
+  link: string;
   description: string;
   width: number;
   height: number;

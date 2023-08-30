@@ -1,26 +1,41 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { motion } from "framer-motion";
 
-import type { Video } from "@/types/videos";
 import SharedModal from "./shared";
+import type { Video } from "@/types";
 
 export default function Modal({
+  videos,
   currentVideo,
   onClose,
 }: {
+  videos: Video[];
   currentVideo: Video;
   onClose?: () => void;
 }) {
-  const overlayRef = useRef(null);
+  let overlayRef = useRef(null);
+
+  let index = Number(currentVideo.id);
+
+  const [direction, setDirection] = useState(0);
+  const [curIndex, setCurIndex] = useState(index);
 
   const handleClose = () => {
-    if (onClose !== undefined) {
-      onClose();
+    if (onClose !== undefined) onClose();
+  }
+
+  const changeVideoId = (newVal: number) => {
+    if (newVal > index) {
+      setDirection(1);
+    } else {
+      setDirection(-1);
     }
-  };
+
+    setCurIndex(newVal);
+  }
 
   return (
     <Dialog
@@ -38,7 +53,13 @@ export default function Modal({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       />
-      <SharedModal currentVideo={currentVideo} closeModal={handleClose} />
+      <SharedModal
+        index={curIndex}
+        direction={direction}
+        items={videos}
+        changeItemId={changeVideoId}
+        closeModal={handleClose}
+        navigation={true} />
     </Dialog>
   );
 }

@@ -137,12 +137,6 @@ export function Pagination({
           onClick={handlePrevious}
         />
       )}
-      {/* <PaginationHighlight
-        active={controls ? range.indexOf(active) + 1 : range.indexOf(active)}
-        noMargin={noMargin}
-        rounded={rounded}
-        shadow={shadow}
-      /> */}
       {range.map(renderItem)}
       {controls && (
         <PaginationIcon

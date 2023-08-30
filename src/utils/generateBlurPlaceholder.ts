@@ -1,10 +1,10 @@
 import imagemin from "imagemin";
-import type { ImageProps } from "@/components/Sections/Books/types";
+import type { Image } from "@/types";
 
-const cache = new Map<ImageProps, string>();
+const cache = new Map<Image, string>();
 
 export default async function getBase64ImageUrl(
-  image: ImageProps
+  image: Image
 ): Promise<string> {
   let url = cache.get(image);
 

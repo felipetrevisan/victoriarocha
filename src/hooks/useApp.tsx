@@ -8,9 +8,9 @@ import {
   useContext,
   useState,
 } from "react";
+import { useCycle } from "framer-motion";
 import { Section, defaultSections } from "@/components/Menu/type";
-import { ImageProps } from "@/components/Sections/Books/types";
-import { Cycle, CycleState, useCycle } from "framer-motion";
+import type { Image } from "@/types";
 
 type AppContextProps = {
   isMenuOpen: boolean;
@@ -18,34 +18,29 @@ type AppContextProps = {
   currentSection: Section;
   lastViewedPhoto: number | null;
   currentViewPhoto: number | null;
-  books: ImageProps[];
-  // openMenu: () => void;
-  // closeMenu: () => void;
+  books: Image[];
   isInHome: () => boolean;
   getSection: (sectionName: string) => Section;
   setCurrentSection: Dispatch<SetStateAction<Section>>;
   setLastViewedPhoto: Dispatch<SetStateAction<number | null>>;
-  setBooks: Dispatch<SetStateAction<ImageProps[]>>;
+  setBooks: Dispatch<SetStateAction<Image[]>>;
   setCurrentViewPhoto: Dispatch<SetStateAction<number | null>>;
-  setIsMenuOpen: any
+  toogleMenu: any
 };
 
 const AppContext = createContext({} as AppContextProps);
 
 export function AppProvider({ children }: { children: React.ReactNode }) {
-  const [isMenuOpen, setIsMenuOpen] = useCycle(false, true);
+  const [isMenuOpen, toogleMenu] = useCycle(false, true);
 
   const [sections, setSections] = useState<Section[]>(defaultSections);
   const [lastViewedPhoto, setLastViewedPhoto] = useState<number | null>(null);
   const [currentViewPhoto, setCurrentViewPhoto] = useState<number | null>(null);
-  const [books, setBooks] = useState<ImageProps[]>([]);
+  const [books, setBooks] = useState<Image[]>([]);
 
   const [currentSection, setCurrentSection] = useState<Section>(() => {
     return defaultSections.find((section) => section?.path === '/')!;
   });
-
-  // const openMenu = () => setIsMenuOpen(true);
-  // const closeMenu = () => setIsMenuOpen(false);
   
   const isInHome = useCallback(
     () => currentSection.path === "/",
@@ -64,9 +59,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   return (
     <AppContext.Provider
       value={{
-        // openMenu,
-        // closeMenu,
-        setIsMenuOpen,
+        toogleMenu,
         isMenuOpen,
         sections,
         currentSection,

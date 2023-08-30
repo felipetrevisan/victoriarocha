@@ -13,7 +13,7 @@ type Props = {
 };
 
 export function Item({
-  section: { name, path },
+  section: { label, path },
   type,
   active = false,
   className = "",
@@ -34,7 +34,7 @@ export function Item({
   return (
     <li className={className}>
       <Link href={path} className={classesMenu} onClick={onClick}>
-        <span className="relative z-50 lg:z-0 text-3xl lg:text-base font-semibold">{name}</span>
+        <span className="relative z-50 wide:z-0 text-3xl wide:text-base font-semibold">{label}</span>
       </Link>
     </li>
   );

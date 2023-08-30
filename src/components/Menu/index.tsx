@@ -18,10 +18,10 @@ export function Menu({ isOpen = false }: Props) {
         isOpen={isOpen}
         current={currentSection}
         sections={sections}
-        className="inline-flex lg:hidden"
+        className="inline-flex wide:hidden"
         type={MenuTypes.drawer}
       />
-      <MenuTop current={currentSection} sections={sections} type={MenuTypes.top} className="hidden lg:inline-flex" />
+      <MenuTop current={currentSection} sections={sections} type={MenuTypes.top} className="hidden wide:inline-flex" />
     </>
   );
 }

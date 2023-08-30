@@ -5,8 +5,8 @@ export enum MenuTypes {
 
 export type Section = {
   name: string;
+  label: string;
   path: string;
-  hash: string;
 };
 
 export type SectionsKey = "home" | "release" | "books" | "videos" | "contact";
@@ -14,27 +14,27 @@ export type SectionsKey = "home" | "release" | "books" | "videos" | "contact";
 export const defaultSections: Section[] = [
   {
     name: "home",
+    label: "Home",
     path: "/",
-    hash: "",
   },
   {
     name: "release",
+    label: "Release",
     path: "/release",
-    hash: "#release",
   },
   {
     name: "books",
+    label: "Books",
     path: "/books",
-    hash: "#books",
   },
   {
     name: "videos",
+    label: "Videos",
     path: "/videos",
-    hash: "#videos",
   },
   {
     name: "contact",
+    label: "Contato",
     path: "/contact",
-    hash: "#contact",
   },
 ];
