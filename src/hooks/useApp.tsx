@@ -8,41 +8,50 @@ import {
   useContext,
   useState,
 } from "react";
-import { usePathname } from "next/navigation";
+import { useCycle } from "framer-motion";
 import { Section, defaultSections } from "@/components/Menu/type";
+import type { Image } from "@/types";
 
 type AppContextProps = {
   isMenuOpen: boolean;
   sections: Section[];
   currentSection: Section;
-  openMenu: () => void;
-  closeMenu: () => void;
-  setCurrentSection: Dispatch<SetStateAction<Section>>;
+  lastViewedPhoto: number | null;
+  currentViewPhoto: number | null;
+  books: Image[];
+  isInHome: () => boolean;
   getSection: (sectionName: string) => Section;
-  // setSections: Dispatch<SetStateAction<Section[]>>;
+  setCurrentSection: Dispatch<SetStateAction<Section>>;
+  setLastViewedPhoto: Dispatch<SetStateAction<number | null>>;
+  setBooks: Dispatch<SetStateAction<Image[]>>;
+  setCurrentViewPhoto: Dispatch<SetStateAction<number | null>>;
+  toogleMenu: any
 };
 
 const AppContext = createContext({} as AppContextProps);
 
 export function AppProvider({ children }: { children: React.ReactNode }) {
-  const pathName = usePathname();
-
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, toogleMenu] = useCycle(false, true);
 
   const [sections, setSections] = useState<Section[]>(defaultSections);
+  const [lastViewedPhoto, setLastViewedPhoto] = useState<number | null>(null);
+  const [currentViewPhoto, setCurrentViewPhoto] = useState<number | null>(null);
+  const [books, setBooks] = useState<Image[]>([]);
 
   const [currentSection, setCurrentSection] = useState<Section>(() => {
-    return defaultSections.find((section) => section.path === pathName)!;
+    return defaultSections.find((section) => section?.path === '/')!;
   });
-
-  const openMenu = () => setIsMenuOpen(true);
-  const closeMenu = () => setIsMenuOpen(false);
+  
+  const isInHome = useCallback(
+    () => currentSection.path === "/",
+    [currentSection]
+  );
 
   const getSection = useCallback(
     (sectionPath: string) => {
       let path = sectionPath || "/";
 
-      return sections.find((section) => section.path === path)!;
+      return sections.find((section) => section?.path === path)!;
     },
     [sections]
   );
@@ -50,13 +59,19 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   return (
     <AppContext.Provider
       value={{
-        openMenu,
-        closeMenu,
+        toogleMenu,
         isMenuOpen,
         sections,
         currentSection,
-        setCurrentSection,
+        lastViewedPhoto,
+        currentViewPhoto,
+        books,
+        isInHome,
         getSection,
+        setCurrentSection,
+        setLastViewedPhoto,
+        setCurrentViewPhoto,
+        setBooks
       }}
     >
       {children}

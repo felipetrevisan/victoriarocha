@@ -6,24 +6,22 @@ import { MenuTop } from "./Top";
 import { MenuTypes } from "./type";
 
 type Props = {
-  type: MenuTypes;
   isOpen?: boolean;
 };
 
-export function Menu({ type = MenuTypes.drawer, isOpen = false }: Props) {
+export function Menu({ isOpen = false }: Props) {
   const { currentSection, sections } = useApp();
 
   return (
     <>
-      {type === MenuTypes.drawer ? (
-        <MenuDrawer
-          isOpen={isOpen}
-          current={currentSection}
-          sections={sections}
-        />
-      ) : (
-        <MenuTop current={currentSection} sections={sections} />
-      )}
+      <MenuDrawer
+        isOpen={isOpen}
+        current={currentSection}
+        sections={sections}
+        className="inline-flex wide:hidden"
+        type={MenuTypes.drawer}
+      />
+      <MenuTop current={currentSection} sections={sections} type={MenuTypes.top} className="hidden wide:inline-flex" />
     </>
   );
 }

@@ -1,27 +1,18 @@
 "use client";
 
-import { Home as Main } from "@/components/Sections/Home";
-import { useApp } from "@/hooks/useApp";
-import { usePathname } from "next/navigation";
-import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+import { Home } from "@/components/Sections/Home";
 
-export default function Home() {
-  const pathName = usePathname();
-  const refHome = useRef<HTMLDivElement>(null);
-
-  const { setCurrentSection, getSection } = useApp();
-
-  useEffect(() => {
-    setCurrentSection(getSection(pathName));
-  }, [getSection, pathName, setCurrentSection]);
-
+export default function App() {
   return (
-    <section
-      ref={refHome}
-      className="flex items-center justify-center bg-app bg-cover h-screen"
-      data-section="home"
+    <motion.div
+      id="home"
+      className="section relative flex h-screen max-h-screen min-h-screen w-screen items-center justify-center"
+      initial="hide"
+      whileInView="show"
+      exit="hide"
     >
-      <Main />
-    </section>
+      <Home />
+    </motion.div>
   );
 }

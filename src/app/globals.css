@@ -2,11 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-  --header-size: @apply w-24;
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+  --header-size: 4.5rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -28,27 +29,10 @@ body {
 }
 
 .container {
-  @apply lg:max-w-[1230px] md:max-w-[1280px] sm:max-w-[768px];
+  @apply z-50 w-[min(100%-3rem,100ch)];
+  margin-inline: auto;
 }
 
-nav li a,
-nav li a span {
-  @apply text-white/80 relative text-2xl font-semibold uppercase ease-in-out;
-}
-
-nav[data-type="top"] li a:hover:after, 
-nav[data-type="top"] li a.active:after {
-  @apply left-0 right-auto w-full;
-}
-
-nav[data-type="top"] li a:after {
-  @apply absolute left-auto right-0 bottom-0 h-1 w-0 bg-purple-500 transition-all ease-in-out duration-300;
-}
-
-nav[data-type="drawer"] li a:hover {
-  @apply before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-purple-500 relative inline-block;
-}
-
-nav[data-type="drawer"] li a.active {
-  @apply before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-purple-500 relative inline-block;
+section[data-section="videos"] iframe {
+  @apply rounded-lg;
 }

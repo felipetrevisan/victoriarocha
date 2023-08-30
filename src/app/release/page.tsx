@@ -1,27 +1,18 @@
 "use client";
 
-import { About } from "@/components/Sections/About";
-import { useApp } from "@/hooks/useApp";
-import { usePathname } from "next/navigation";
-import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+import { Release as Content } from "@/components/Sections/Release";
 
 export default function Release() {
-  const pathName = usePathname();
-  const refRelease = useRef<HTMLDivElement>(null);
-  
-  const { setCurrentSection, getSection } = useApp();
-
-  useEffect(() => {
-    setCurrentSection(getSection(pathName));
-  }, [getSection, pathName, setCurrentSection]);
-
   return (
-    <section
-      ref={refRelease}
-      className="py-12 sm:py-16 md:py-28"
-      data-section="release"
+    <motion.section
+      id="release"
+      className="section relative my-32 flex wide:items-center justify-center"
+      initial="hide"
+      whileInView="show"
+      exit="hide"
     >
-      <About />
-    </section>
+      <Content />
+    </motion.section>
   );
 }
