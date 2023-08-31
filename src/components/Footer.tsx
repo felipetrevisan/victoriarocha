@@ -8,11 +8,11 @@ export function Footer() {
   if (isInHome()) return <></>;
 
   return (
-    <footer className="footer backdrop-blur-x w-screen border-t py-5 shadow-black border-white border-opacity-10 bg-black">
+    <footer className="footer fixed bottom-0 w-screen border-t border-white border-opacity-10 bg-black py-5 z-[100] wide:px-16 md:px-12 shadow-black backdrop-blur-md bg-black/70">
       <div className="container">
         <div className="grid grid-cols-12">
-          <div className="col-span-12 text-center md:col-span-6 md:text-right">
-            <p className="m-0 text-opacity-75 text-white">
+          <div className="md:col-span-6 md:text-right col-span-12 text-center">
+            <p className="m-0 text-white text-opacity-75">
               © {new Date().getFullYear()} - Todos os direitos reservados
             </p>
           </div>

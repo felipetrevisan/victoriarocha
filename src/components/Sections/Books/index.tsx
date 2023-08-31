@@ -59,7 +59,7 @@ export function Books({ images, itemsPerPage = 6 }: Props) {
         {currentPhoto !== undefined && (
           <Modal images={images} currentPhoto={currentPhoto} onClose={() => setCurrentPhoto(undefined)} />
         )}
-        <div className="flex flex-row gap-7 md:flex-col">
+        <div className="flex flex-row gap-7 justify-center md:flex-col">
           <AnimatePresence>
             <div className="overflow-hidden rounded-2xl border border-solid border-black/[0.1] bg-white/[0.1] p-6 backdrop-blur-xl backdrop-saturate-[180deg]">
               <div className="columns-2 gap-4 wide:columns-3 xl:columns-3 2xl:columns-3">

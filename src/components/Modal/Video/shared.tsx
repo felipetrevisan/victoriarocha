@@ -74,8 +74,8 @@ export default function SharedModal({
               >
                 <ReactPlayer
                   url={currentVideo?.player_embed_url}
-                  width="60dvw"
-                  height="60dvh"
+                  width="80dvw"
+                  height="50dvh"
                   controls
                   onReady={() => setLoaded(true)}
                 />

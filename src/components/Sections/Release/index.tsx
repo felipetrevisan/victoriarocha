@@ -43,9 +43,9 @@ export function Release() {
         transition={{ delay: 0.4, duration: 0.8, ease: "easeInOut" }}
       >
         <div className="container">
-          <div className="grid grid-cols-1 gap-6 wide:grid-cols-12">
-            <div className="md:col-span-5 relative flex place-items-center justify-center wide:col-span-6">
-              <div className="relative m-auto mx-auto max-w-[400px] overflow-hidden rounded-full wide:sticky wide:top-[120px]">
+          <div className="grid grid-cols-1 gap-6 wide:grid-cols-12 wide:place-items-start taller-than-854:place-items-center">
+            <div className="md:col-span-5 relative flex justify-center wide:col-span-6">
+              <div className="relative m-auto mx-auto max-w-[400px] overflow-hidden rounded-full wide:mt-28 taller-than-854:mt-0">
                 <motion.div
                   className="md:h-[400px] md:w-[400px] md:max-w-[400px] group relative h-[300px] w-[300px] max-w-[300px] rounded-full wide:h-[400px] wide:w-[400px] wide:max-w-[400px]"
                   initial="initial"
@@ -82,7 +82,7 @@ export function Release() {
                       >
                         Victória Rocha
                       </p>{" "}
-                      começou sua carreia artística aos 6 anos de idade.
+                      começou sua carreira artística aos 6 anos de idade.
                       Mudou-se para Buenos Aires (Argentina), em 1998, para
                       interpretar a pequena{" "}
                       <p
@@ -96,7 +96,8 @@ export function Release() {
                       >
                         Chiquititas
                       </p>{" "}
-                      (SBT) onde ficou nacionalmente conhecida.
+                      <p className="inline-flex text-xs">(SBT)</p> onde ficou
+                      nacionalmente conhecida.
                     </h2>
                     <h2>
                       Ao voltar para o Brasil, dois anos depois, protagonizou
@@ -106,7 +107,8 @@ export function Release() {
                       >
                         O Sonho de Luiza
                       </p>{" "}
-                      (RedeTV) e participou de campanhas publicitárias.
+                      <p className="inline-flex text-xs">(RedeTV)</p> e
+                      participou de campanhas publicitárias.
                     </h2>
                     <h2>
                       No teatro, atuou em mais de{" "}
@@ -141,7 +143,7 @@ export function Release() {
                   </div>
                   <motion.a
                     href="https://victoriarocha.s3.sa-east-1.amazonaws.com/downloads/2020_Victo%CC%81ria%20Rocha.pdf"
-                    className="relative flex h-full items-center justify-center rounded-md my-10 bg-black/70 p-5 after:absolute after:left-[-1*3px] after:top-[-1*3px] after:-z-[1] after:h-[calc(100%+3px*2)] after:w-[calc(100%+3px*2)] after:rounded-md after:bg-gradient-to-r after:from-[#12c2e9] after:via-[#c471ed] after:to-[#f64f59] hover:bg-black/50 hover:after:animate-pulse dark:bg-black/90 dark:hover:bg-black/70"
+                    className="relative my-10 flex h-full items-center justify-center rounded-md bg-black/70 p-5 after:absolute after:left-[-1*3px] after:top-[-1*3px] after:-z-[1] after:h-[calc(100%+3px*2)] after:w-[calc(100%+3px*2)] after:rounded-md after:bg-gradient-to-r after:from-[#12c2e9] after:via-[#c471ed] after:to-[#f64f59] hover:bg-black/50 hover:after:animate-pulse dark:bg-black/90 dark:hover:bg-black/70"
                     download={true}
                     rel="noopeneer noreferrer"
                     target="_blank"
