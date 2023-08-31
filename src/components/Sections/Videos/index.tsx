@@ -55,10 +55,10 @@ export function Videos({ data, itemsPerPage }: VideosResponse & { itemsPerPage: 
             onClose={() => setCurrentVideo({} as Video)}
           />
         )}
-        <div className="flex flex-row gap-7 md:flex-col">
+        <div className="flex flex-row gap-7 justify-center md:flex-col">
           <AnimatePresence>
             <div className="overflow-hidden rounded-2xl border border-solid border-black/[0.1] bg-white/[0.1] p-6 backdrop-blur-xl backdrop-saturate-[180deg]">
-              <div className="columns-2 gap-4 narrow:columns-3 wide:columns-3 xl:columns-3 2xl:columns-3">
+              <div className="gap-4 narrow:columns-1 wide:columns-3 xl:columns-3 2xl:columns-3">
                 {videos.slice((page - 1) * +itemsPerPage, page * +itemsPerPage).map((video) => (
                   <motion.div
                     key={video.uri}

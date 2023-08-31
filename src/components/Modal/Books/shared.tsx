@@ -90,28 +90,28 @@ export default function SharedModal({
         </div>
 
         {/* Buttons + bottom nav bar */}
-        <div className="absolute inset-0 mx-auto flex max-w-7xl items-center justify-center">
+        <div className="absolute inset-0 mx-auto max-w-7xl items-center justify-center">
           {/* Buttons */}
           {loaded && (
-            <div className="relative aspect-[3/2] max-h-full w-full">
+            <div className="relative aspect-[1/1] max-h-full w-full hidden wide:flex">
               {navigation && (
                 <>
                   {index > 0 && (
                     <button
-                      className="absolute left-3 top-[calc(50%-16px)] rounded-full bg-purple-500/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-purple-900/75 hover:text-white focus:outline-none hover:scale-110"
+                      className="absolute left-[calc(50%-385px)] top-[calc(50%-50px)] rounded-full border border-black/50 p-3 text-black/75 backdrop-blur-lg transition hover:bg-purple-900/75 hover:text-white focus:outline-none hover:animate-pulse"
                       style={{ transform: "translate3d(0, 0, 0)" }}
                       onClick={() => changeItemId(index - 1)}
                     >
-                      <ChevronLeft className="h-6 w-6" />
+                      <ChevronLeft className="narrow:h-12 narrow:w-12 wide:h-8 wide:w-8" />
                     </button>
                   )}
                   {index + 1 < items!.length && (
                     <button
-                      className="absolute right-3 top-[calc(50%-16px)] rounded-full bg-purple-500/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-purple-900/75 hover:text-white focus:outline-none hover:scale-110"
+                      className="absolute right-[calc(50%-385px)] top-[calc(50%-50px)] rounded-full border border-black/50 p-3 text-black/75 backdrop-blur-lg transition hover:bg-purple-900/75 hover:text-white focus:outline-none hover:animate-pulse"
                       style={{ transform: "translate3d(0, 0, 0)" }}
                       onClick={() => changeItemId(index + 1)}
                     >
-                      <ChevronRight className="h-6 w-6" />
+                      <ChevronRight className="narrow:h-12 narrow:w-12 wide:h-8 wide:w-8" />
                     </button>
                   )}
                 </>

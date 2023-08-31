@@ -24,7 +24,7 @@ export default async function Books() {
     let index = 0;
 
     for (let result of results) {
-      if (result.Size) {
+      if (result.Size && !result.Key?.includes(".pdf")) {
         reducedResults.push({
           id: index,
           key: result.ETag?.replaceAll('"', ""),
@@ -59,9 +59,9 @@ export default async function Books() {
   return (
     <section
       id="books"
-      className="section relative my-32 flex wide:items-center justify-center"
+      className="section relative my-32 flex justify-center wide:items-center"
     >
-      <div className="container flex flex-col justify-center md:justify-start wide:justify-start">
+      <div className="md:justify-start container flex flex-col justify-center wide:justify-start">
         <Works images={reduceImages} itemsPerPage={20} />
       </div>
     </section>
