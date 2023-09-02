@@ -1,15 +1,29 @@
+export enum ContentArea {
+  header = "header",
+  avatar = "avatar",
+  footer = "footer",
+}
+
 export enum MenuTypes {
   drawer,
   top,
 }
 
+export enum Sections {
+  home,
+  release,
+  books,
+  videos,
+  contact,
+}
+
 export type Section = {
-  name: string;
+  name: keyof typeof Sections;
   label: string;
   path: string;
 };
 
-export type SectionsKey = "home" | "release" | "books" | "videos" | "contact";
+export type SectionsKey = keyof typeof Sections;
 
 export const defaultSections: Section[] = [
   {

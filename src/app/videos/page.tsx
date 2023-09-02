@@ -14,19 +14,16 @@ export default async function Videos() {
 
   const videosJson: VideosResponse = await videosResponse.json();
   let index = 0;
-  const videos = videosJson.data.map(video => {
+  const videos = videosJson.data.map((video) => {
     return {
       ...video,
-      id: index++
-    }
-  })
-  
+      id: index++,
+    };
+  });
+
   return (
-    <section
-      id="videos"
-      className="section relative my-32 flex wide:items-center justify-center"
-    >
-      <div className="container flex flex-col justify-center md:justify-start wide:justify-start">
+    <section id="videos">
+      <div className="container flex flex-col justify-center md:justify-start lg:justify-start">
         <Content data={videos} itemsPerPage={12} />
       </div>
     </section>

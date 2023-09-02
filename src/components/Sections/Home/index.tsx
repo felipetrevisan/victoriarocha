@@ -40,7 +40,7 @@ export function Home() {
           <div className={classes}>
             <div className="flex h-screen flex-col items-center justify-center gap-1">
               <motion.h4
-                className={`text-xl font-light text-purple-500 wide:text-2xl ${oswald.className}`}
+                className={`text-xl font-light text-purple-500 lg:text-2xl ${oswald.className}`}
                 variants={slideUpVariants}
                 initial="initial"
                 animate="animate"
@@ -48,7 +48,7 @@ export function Home() {
                 Atriz & Modelo
               </motion.h4>
               <motion.h1
-                className={`text-6xl font-light text-white wide:text-8xl ${oswald.className}`}
+                className={`text-6xl font-light text-white lg:text-8xl ${oswald.className}`}
                 variants={slideUpVariants}
                 initial="initial"
                 animate="animate"
@@ -56,7 +56,7 @@ export function Home() {
                 Victória Rocha
               </motion.h1>
               <motion.div
-                className="my-10 flex h-16 flex-col gap-6 md:flex-row wide:flex-row"
+                className="my-10 flex h-16 flex-col gap-6 md:flex-row lg:flex-row"
                 variants={slideUpVariants}
                 initial="initial"
                 animate="animate"
@@ -65,7 +65,7 @@ export function Home() {
                   href="/contact"
                   className="relative flex h-full items-center justify-center rounded-md bg-black/70 p-5 after:absolute after:left-[-1*3px] after:top-[-1*3px] after:-z-[1] after:h-[calc(100%+3px*2)] after:w-[calc(100%+3px*2)] after:rounded-md after:bg-gradient-to-r after:from-[#12c2e9] after:via-[#c471ed] after:to-[#f64f59] hover:bg-black/50 hover:after:animate-pulse dark:bg-black/90 dark:hover:bg-black/70"
                 >
-                  <span className="md:text-md flex items-center justify-center gap-2 text-sm uppercase text-white wide:text-lg">
+                  <span className="md:text-md flex items-center justify-center gap-2 text-sm uppercase text-white lg:text-lg">
                     <span>Entre em contato</span>
                     <span>
                       <MailIcon fontSize={10} />
@@ -79,7 +79,7 @@ export function Home() {
                   rel="noopeneer noreferrer"
                   target="_blank"
                 >
-                  <span className="md:text-md flex items-center justify-center gap-2 text-sm uppercase text-white wide:text-lg">
+                  <span className="md:text-md flex items-center justify-center gap-2 text-sm uppercase text-white lg:text-lg">
                     <span>Resume / CV</span>
                     <span>
                       <DownloadIcon fontSize={10} />

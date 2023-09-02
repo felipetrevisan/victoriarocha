@@ -2,7 +2,7 @@
 
 import { ReactNode } from "react";
 import clsx from "clsx";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useApp } from "@/hooks/useApp";
 
 export function Body({ children }: { children: ReactNode }) {
@@ -14,7 +14,7 @@ export function Body({ children }: { children: ReactNode }) {
 
   return (
     <AnimatePresence>
-      <body className={classes}>{children}</body>
+      <motion.body animate={{ opacity: 1 }} initial={{ opacity: 0 }} className={classes}>{children}</motion.body>
     </AnimatePresence>
   );
 }

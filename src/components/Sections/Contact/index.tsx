@@ -66,7 +66,7 @@ export function Contact() {
       <motion.div
         ref={refContact}
         data-section="contact"
-        className="max-sm::items-center md:wide:justify-start container flex flex-col justify-center"
+        className="max-sm::items-center md:lg:justify-start container flex flex-col justify-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: [0, 1] }}
@@ -76,7 +76,7 @@ export function Contact() {
           <Title content="Contato" />
         </div>
         <div className="flex flex-wrap items-center">
-          <div className="mx-auto w-full wide:w-[66.666%]">
+          <div className="mx-auto w-full lg:w-[66.666%]">
             <h6 className="md:flex-row mb-5 flex flex-col items-center justify-center gap-2">
               Preencha o formulário ou entre em contato pelo e-mail
               <a
@@ -180,7 +180,7 @@ export function Contact() {
                   {loading && <BounceLoader color="#c471ed" />}
                   <Form.Submit asChild>
                     <button
-                      className="md:text-md relative rounded-full bg-none p-3 text-sm uppercase text-white after:absolute after:bottom-0 after:left-0 after:right-8 after:h-1 after:w-0 after:bg-border after:transition-[all_ease_0.35s] hover:after:left-0 hover:after:right-auto hover:after:w-full wide:text-lg disabled:opacity-40"
+                      className="md:text-md relative rounded-full bg-none p-3 text-sm uppercase text-white after:absolute after:bottom-0 after:left-0 after:right-8 after:h-1 after:w-0 after:bg-border after:transition-[all_ease_0.35s] hover:after:left-0 hover:after:right-auto hover:after:w-full lg:text-lg disabled:opacity-40"
                       disabled={loading}
                     >
                       Enviar Mensagem

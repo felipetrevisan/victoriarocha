@@ -1,12 +1,11 @@
 "use client";
 
 import clsx from "clsx";
-
-import { useApp } from "@/hooks/useApp";
-import { Item } from "../Item";
-import type { MenuTypes, Section } from "../type";
 import { motion } from "framer-motion";
-import { menuMobileVariants, slideUpVariants } from "@/config/animation";
+import type { MenuTypes, Section } from "@/types";
+import { useApp } from "@/hooks/useApp";
+import { menuMobileVariants } from "@/config/animation";
+import { Item } from "../Item";
 
 interface Props {
   isOpen: boolean;
