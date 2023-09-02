@@ -4,12 +4,13 @@ import { useLayoutEffect } from "react";
 import { Oswald } from "next/font/google";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
-import { Instagram, Facebook, Youtube } from "lucide-react";
 
 import { useApp } from "@/hooks/useApp";
 import useKeyPress from "@/hooks/useKeyPress";
-import { headerVariants, menuMobileVariants } from "@/config/animation";
+import { headerVariants } from "@/config/animation";
+import { ContentArea } from "@/types";
 import { Menu } from "./Menu";
+import { SocialNetworks } from "./SocialNetworks";
 
 const oswald = Oswald({ subsets: ["latin"] });
 
@@ -24,10 +25,10 @@ export function Header() {
   }, [escPressed]);
 
   const classes = clsx(
-    "fixed select-none left-0 right-0 top-0 w-full flex items-center justify-between px-5 wide:px-32 py-4 z-[100] wide:px-16 md:px-12 shadow-black backdrop-blur-xl",
+    "landscape:sm:relative landscape:lg:fixed portrait:fixed select-none landscape:lg:left-0 landscape:lg:right-0 landscape:lg:top-0 portrait:left-0 portrait:right-0 portrait:top-0 w-full flex items-center justify-between px-5 lg:px-32 py-4 z-[100] lg:px-16 md:px-12 shadow-black backdrop-blur-xl",
     {
       "border border-black/5 backdrop-blur-md bg-black/20": isInHome(),
-      "backdrop-blur-md bg-black/70 wide:rounded-none":
+      "backdrop-blur-md bg-black/70 lg:rounded-none":
         !isInHome(),
     }
   );
@@ -44,14 +45,14 @@ export function Header() {
         <div className="flex w-full items-center justify-between">
           <div className="logo">
             <h2
-              className={`${oswald.className} text-2xl text-white md:text-3xl wide:text-4xl`}
+              className={`${oswald.className} text-2xl text-white md:text-3xl lg:text-4xl`}
             >
               Victória Rocha
             </h2>
           </div>
           <button
             type="button"
-            className="flex flex-col items-center justify-center wide:hidden"
+            className="flex flex-col items-center justify-center lg:hidden"
             aria-controls="mobile-menu"
             aria-expanded="false"
             onClick={toogleMenu}
@@ -73,12 +74,12 @@ export function Header() {
               }`}
             ></span>
           </button>
-          <motion.div className="hidden items-center justify-center wide:flex">
+          <motion.div className="hidden items-center justify-center lg:flex">
             <Menu isOpen={false} />
           </motion.div>
           {isMenuOpen && (
             <motion.div
-              className="absolute z-[1045] min-h-screen flex justify-center wide:hidden backdrop-blur-3xl bg-black"
+              className="absolute z-[1045] min-h-screen flex justify-center lg:hidden backdrop-blur-3xl bg-black"
               initial={{ width: 0, top: 0, right: 0 }}
               animate={{
                 width: 300,
@@ -96,36 +97,13 @@ export function Header() {
             </motion.div>
           )}
           <motion.div
-            className="hidden flex-wrap items-center justify-center wide:mt-2 wide:flex"
+            className="hidden flex-wrap items-center justify-center lg:mt-2 lg:flex"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: [0, 1] }}
             transition={{ delay: 0.4, duration: 0.8, ease: "easeInOut" }}
           >
-            <a
-              className="relative mx-1 inline-flex h-9 w-9 items-center justify-center rounded-full border border-purple-600 bg-purple-900/80 text-white duration-300 ease-linear hover:scale-125"
-              href="https://www.instagram.com/victoriarocha.oficial"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Instagram size={18} />
-            </a>
-            <a
-              className="relative mx-1 inline-flex h-9 w-9 items-center justify-center rounded-full border border-purple-600 bg-purple-900/80 text-white duration-300 ease-linear hover:scale-125"
-              href="http://www.facebook.com/VRmidia"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Facebook size={18} />
-            </a>
-            <a
-              className="relative mx-1 inline-flex h-9 w-9 items-center justify-center rounded-full border border-purple-600 bg-purple-900/80 text-white duration-300 ease-linear hover:scale-125"
-              href="https://www.youtube.com/user/VRmidia"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Youtube size={18} />
-            </a>
+            <SocialNetworks location={ContentArea.header} size={18} />
           </motion.div>
         </div>
       </motion.header>

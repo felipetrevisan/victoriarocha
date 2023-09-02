@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
   --foreground-rgb: 255, 255, 255;
   --background-start-rgb: 0, 0, 0;
@@ -31,8 +30,4 @@ body {
 .container {
   @apply z-50 w-[min(100%-3rem,100ch)];
   margin-inline: auto;
-}
-
-section[data-section="videos"] iframe {
-  @apply rounded-lg;
 }

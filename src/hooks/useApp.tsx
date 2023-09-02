@@ -9,8 +9,7 @@ import {
   useState,
 } from "react";
 import { useCycle } from "framer-motion";
-import { Section, defaultSections } from "@/components/Menu/type";
-import type { Image } from "@/types";
+import { Image, Section, defaultSections } from "@/types";
 
 type AppContextProps = {
   isMenuOpen: boolean;

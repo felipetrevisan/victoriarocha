@@ -11,6 +11,7 @@ import { opacityVariants } from "@/config/animation";
 import { TransitionEffect } from "@/components/TransitionEffect";
 import { Title } from "@/components/Title";
 import { SocialNetworks } from "@/components/SocialNetworks";
+import { ContentArea } from "@/types";
 
 const oswald = Oswald({ subsets: ["latin"] });
 
@@ -43,17 +44,17 @@ export function Release() {
         transition={{ delay: 0.4, duration: 0.8, ease: "easeInOut" }}
       >
         <div className="container">
-          <div className="grid grid-cols-1 gap-6 wide:grid-cols-12 wide:place-items-start taller-than-854:place-items-center">
-            <div className="md:col-span-5 relative flex justify-center wide:col-span-6">
-              <div className="relative m-auto mx-auto max-w-[400px] overflow-hidden rounded-full wide:mt-28 taller-than-854:mt-0">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:place-items-start taller-than-854:place-items-center">
+            <div className="landscape:md:col-span-7 landscape:lg:col-span-6 md:col-span-5 relative flex justify-center lg:col-span-6">
+              <div className="relative m-auto mx-auto max-w-[400px] overflow-hidden rounded-full lg:mt-28 taller-than-854:mt-0">
                 <motion.div
-                  className="md:h-[400px] md:w-[400px] md:max-w-[400px] group relative h-[300px] w-[300px] max-w-[300px] rounded-full wide:h-[400px] wide:w-[400px] wide:max-w-[400px]"
+                  className="md:h-[400px] md:w-[400px] md:max-w-[400px] group relative h-[300px] w-[300px] max-w-[300px] rounded-full lg:h-[400px] lg:w-[400px] lg:max-w-[400px]"
                   initial="initial"
                   animate="animate"
                   variants={opacityVariants}
                 >
                   <Image
-                    className="md:h-[400px] md:w-[400px] h-[300px] w-[300px] wide:h-[400px] wide:w-[400px]"
+                    className="md:h-[400px] md:w-[400px] h-[300px] w-[300px] lg:h-[400px] lg:w-[400px]"
                     src="/assets/profile-release.png"
                     alt="Foto"
                     fill
@@ -67,11 +68,11 @@ export function Release() {
                   exit="hide"
                   variants={opacityVariants}
                 >
-                  <SocialNetworks />
+                  <SocialNetworks location={ContentArea.avatar} size={18} />
                 </motion.div>
               </div>
             </div>
-            <div className="pt-lg-0 md:col-span-7 pt-5 wide:col-span-6">
+            <div className="pt-lg-0 md:col-span-7 pt-5 lg:col-span-6">
               <div>
                 <div>
                   <Title content="Release" />
@@ -152,7 +153,7 @@ export function Release() {
                     exit="hide"
                     variants={opacityVariants}
                   >
-                    <span className="md:text-md flex items-center justify-center gap-2 text-sm uppercase text-white wide:text-lg">
+                    <span className="md:text-md flex items-center justify-center gap-2 text-sm uppercase text-white lg:text-lg">
                       <span>Ver meu Resume / CV</span>
                       <span>
                         <DownloadIcon fontSize={10} />

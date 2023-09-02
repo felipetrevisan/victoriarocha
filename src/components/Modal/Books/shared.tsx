@@ -55,7 +55,7 @@ export default function SharedModal({
         </button>
       </div>
       <div
-        className="relative z-50 flex aspect-[3/2] w-full max-w-7xl items-center wide:h-full xl:taller-than-854:h-auto"
+        className="relative z-50 flex aspect-[3/2] w-full max-w-7xl items-center lg:h-full xl:taller-than-854:h-auto"
         {...handlers}
       >
         {/* Main image */}
@@ -93,7 +93,7 @@ export default function SharedModal({
         <div className="absolute inset-0 mx-auto max-w-7xl items-center justify-center">
           {/* Buttons */}
           {loaded && (
-            <div className="relative aspect-[1/1] max-h-full w-full hidden wide:flex">
+            <div className="relative aspect-[1/1] max-h-full w-full hidden lg:flex">
               {navigation && (
                 <>
                   {index > 0 && (
@@ -102,7 +102,7 @@ export default function SharedModal({
                       style={{ transform: "translate3d(0, 0, 0)" }}
                       onClick={() => changeItemId(index - 1)}
                     >
-                      <ChevronLeft className="narrow:h-12 narrow:w-12 wide:h-8 wide:w-8" />
+                      <ChevronLeft className="narrow:h-12 narrow:w-12 lg:h-8 lg:w-8" />
                     </button>
                   )}
                   {index + 1 < items!.length && (
@@ -111,7 +111,7 @@ export default function SharedModal({
                       style={{ transform: "translate3d(0, 0, 0)" }}
                       onClick={() => changeItemId(index + 1)}
                     >
-                      <ChevronRight className="narrow:h-12 narrow:w-12 wide:h-8 wide:w-8" />
+                      <ChevronRight className="narrow:h-12 narrow:w-12 lg:h-8 lg:w-8" />
                     </button>
                   )}
                 </>
