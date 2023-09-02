@@ -9,7 +9,7 @@ export function Content({ children }: { children: ReactNode }) {
   const { isInHome } = useApp();
 
   const classes = clsx(
-    "relative z-30 h-full min-h-screen w-full border landscape:sm:border-pink-500 landscape:lg:border-yellow-500 portrait:sm:border-blue-500 portrait:lg:border-green-500 section flex lg:items-center justify-center portrait:my-16 landscape:sm:my-0 py-10 landscape:lg:my-32",
+    "relative z-30 h-full min-h-screen w-full section flex lg:items-center justify-center portrait:my-16 landscape:sm:my-0 py-10 landscape:lg:my-32",
     {
       "py-0": isInHome(),
     }
