@@ -8,13 +8,13 @@ import { useApp } from "@/hooks/useApp";
 export function Body({ children }: { children: ReactNode }) {
   const { isMenuOpen, isInHome } = useApp();
 
-  const classes = clsx("bg-zinc-950/90", {
-    "overflow-hidden": isMenuOpen || isInHome(),
-  });
+  // const classes = clsx("bg-zinc-950/90", {
+  //   "overflow-hidden": isMenuOpen || isInHome(),
+  // });
 
   return (
     <AnimatePresence>
-      <motion.body animate={{ opacity: 1 }} initial={{ opacity: 0 }} className={classes}>{children}</motion.body>
+      <motion.body animate={{ opacity: 1 }} initial={{ opacity: 0 }}>{children}</motion.body>
     </AnimatePresence>
   );
 }
