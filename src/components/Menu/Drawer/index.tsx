@@ -26,7 +26,7 @@ export function MenuDrawer({
 
   const classes = clsx(
     className,
-    "flex flex-col justify-center border-none bg-clip-padding text-neutral-700 shadow-sm outline-none transition duration-300 ease-in-out [&[data-open]]:transform-none"
+    "flex flex-col justify-center"
   );
 
   return (
@@ -39,11 +39,9 @@ export function MenuDrawer({
       exit="closed"
       custom={isOpen}
     >
-      <nav
-        className="flex h-full w-full max-w-full items-center justify-center px-2 py-4"
-        data-type="drawer"
-      >
-        <ul className="flex flex-col items-center justify-between gap-5 p-4">
+       <nav className="flex items-center justify-between py-4 px-2">
+        <ul className="navbar flex flex-row p-4 lg:mx-auto lg:flex-row lg:p-0">
+        {/* <ul className="flex flex-col items-center justify-between gap-5 p-4"> */}
           {sections.map((section) => {
             return (
               <Item
