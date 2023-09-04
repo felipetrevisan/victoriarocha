@@ -1,13 +1,14 @@
 "use client";
 
-import { useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { Oswald } from "next/font/google";
+import Link from "next/link";
 import clsx from "clsx";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, inView, motion } from "framer-motion";
 
 import { useApp } from "@/hooks/useApp";
 import useKeyPress from "@/hooks/useKeyPress";
-import { headerVariants } from "@/config/animation";
+import { headerItemsVariants, headerVariants } from "@/config/animation";
 import { ContentArea } from "@/types";
 import { Menu } from "./Menu";
 import { SocialNetworks } from "./SocialNetworks";
@@ -17,6 +18,8 @@ const oswald = Oswald({ subsets: ["latin"] });
 export function Header() {
   const { toogleMenu, isMenuOpen, isInHome } = useApp();
   const escPressed: boolean = useKeyPress("Escape");
+
+  const MotionLinkComponent = motion(Link);
 
   useLayoutEffect(() => {
     if (escPressed) {
@@ -50,19 +53,46 @@ export function Header() {
         variants={headerVariants}
       >
         <div className="flex w-full items-center justify-between">
-          <div className="logo">
-            <h2
-              className={`${oswald.className} text-2xl text-white md:text-3xl lg:text-4xl`}
+          <motion.div className="logo">
+            <MotionLinkComponent
+              href={"/"}
+              className={`${oswald.className} text-2xl md:text-3xl lg:text-4xl`}
+              initial={{
+                color: "#FFF",
+              }}
+              whileHover={{
+                color: ["#12c2e9", "#c471ed", "#f64f59", "#12c2e9"],
+                transition: {
+                  repeat: Infinity,
+                  duration: 2,
+                  ease: "backInOut",
+                },
+              }}
+              whileTap={{
+                color: ["#12c2e9", "#c471ed", "#f64f59", "#12c2e9"],
+                transition: {
+                  repeat: Infinity,
+                  duration: 2,
+                  ease: "circInOut",
+                },
+              }}
+              exit={{
+                color: "#FFF",
+              }}
             >
               Victória Rocha
-            </h2>
-          </div>
-          <button
+            </MotionLinkComponent>
+          </motion.div>
+          <motion.button
             type="button"
             className={`flex flex-col items-center justify-center lg:hidden`}
             aria-controls="mobile-menu"
             aria-expanded="false"
-            onClick={toogleMenu}
+            onClick={toogleMenu as any}
+            variants={headerItemsVariants}
+            initial="enter"
+            animate="move"
+            exit="exit"
           >
             <span className="sr-only">Open main menu</span>
             <span
@@ -84,18 +114,22 @@ export function Header() {
                   : "translate-y-0.5"
               }`}
             ></span>
-          </button>
-          <motion.div className="hidden items-center justify-center lg:flex">
+          </motion.button>
+          <motion.div
+            className="hidden items-center justify-center lg:flex"
+            variants={headerItemsVariants}
+            initial="enter"
+            animate="move"
+            exit="exit"
+          >
             <Menu isOpen={false} />
           </motion.div>
-          {/*className="absolute z-[1045] min-h-screen flex justify-center lg:hidden backdrop-blur-3xl bg-black"
-           */}
           <motion.div
             className="hidden flex-wrap items-center justify-center lg:mt-2 lg:flex"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: [0, 1] }}
-            transition={{ delay: 0.4, duration: 0.8, ease: "easeInOut" }}
+            variants={headerItemsVariants}
+            initial="enter"
+            animate="move"
+            exit="exit"
           >
             <SocialNetworks location={ContentArea.header} size={18} />
           </motion.div>
@@ -107,7 +141,7 @@ export function Header() {
           initial={{ width: 0, top: -100, right: 0, height: 0 }}
           animate={{
             width: "100%",
-            height: 'max-content',
+            height: "max-content",
             top: 64,
             right: 0,
           }}

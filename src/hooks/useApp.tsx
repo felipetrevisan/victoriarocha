@@ -8,7 +8,7 @@ import {
   useContext,
   useState,
 } from "react";
-import { useCycle } from "framer-motion";
+import { Cycle, useCycle } from "framer-motion";
 import { Image, Section, defaultSections } from "@/types";
 
 type AppContextProps = {
@@ -24,7 +24,7 @@ type AppContextProps = {
   setLastViewedPhoto: Dispatch<SetStateAction<number | null>>;
   setBooks: Dispatch<SetStateAction<Image[]>>;
   setCurrentViewPhoto: Dispatch<SetStateAction<number | null>>;
-  toogleMenu: any
+  toogleMenu: Cycle;
 };
 
 const AppContext = createContext({} as AppContextProps);
@@ -38,9 +38,9 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const [books, setBooks] = useState<Image[]>([]);
 
   const [currentSection, setCurrentSection] = useState<Section>(() => {
-    return defaultSections.find((section) => section?.path === '/')!;
+    return defaultSections.find((section) => section?.path === "/")!;
   });
-  
+
   const isInHome = useCallback(
     () => currentSection.path === "/",
     [currentSection]
