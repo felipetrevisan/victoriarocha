@@ -2,8 +2,8 @@
 
 import { useApp } from "@/hooks/useApp";
 import { MenuTypes } from "@/types";
-import { MenuDrawer } from "./Drawer";
-import { MenuTop } from "./Top";
+import { Menu as MenuMobile } from "./Mobile";
+import { Menu as MenuDesktop } from "./Desktop";
 
 type Props = {
   isOpen?: boolean;
@@ -14,14 +14,19 @@ export function Menu({ isOpen = false }: Props) {
 
   return (
     <>
-      <MenuDrawer
+      <MenuMobile
         isOpen={isOpen}
         current={currentSection}
         sections={sections}
         className="inline-flex lg:hidden"
         type={MenuTypes.drawer}
       />
-      <MenuTop current={currentSection} sections={sections} type={MenuTypes.top} className="hidden lg:inline-flex" />
+      <MenuDesktop
+        current={currentSection}
+        sections={sections}
+        type={MenuTypes.top}
+        className="hidden lg:inline-flex"
+      />
     </>
   );
 }

@@ -66,7 +66,7 @@ export function Contact() {
       <motion.div
         ref={refContact}
         data-section="contact"
-        className="max-sm::items-center md:lg:justify-start container flex flex-col justify-center"
+        className="max-sm::items-center container flex flex-col justify-center md:lg:justify-start"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: [0, 1] }}
@@ -76,8 +76,8 @@ export function Contact() {
           <Title content="Contato" />
         </div>
         <div className="flex flex-wrap items-center">
-          <div className="mx-auto w-full lg:w-[66.666%]">
-            <h6 className="md:flex-row mb-5 flex flex-col items-center justify-center gap-2">
+          <div className="mx-auto w-full">
+            <h6 className="mb-5 flex flex-col items-center justify-center gap-2 md:flex-row">
               Preencha o formulário ou entre em contato pelo e-mail
               <a
                 href={`mailto:${process.env.NEXT_PUBLIC_SENDER_EMAIL}`}
@@ -106,7 +106,7 @@ export function Contact() {
                 className="contact-info grid grid-cols-12 gap-4"
                 onSubmit={handleSubmit((data) => handleSendEmail(data))}
               >
-                <Form.Field name="name" className="md:col-span-6 col-span-12">
+                <Form.Field name="name" className="col-span-12 md:col-span-6">
                   <Form.Control
                     className="text-md w-full rounded-md border border-solid border-black/10 bg-black/50 px-3 py-2 font-normal outline-2"
                     type="text"
@@ -121,7 +121,7 @@ export function Contact() {
                     Por favor digite seu nome
                   </Form.Message>
                 </Form.Field>
-                <Form.Field name="email" className="md:col-span-6 col-span-12">
+                <Form.Field name="email" className="col-span-12 md:col-span-6">
                   <Form.Control
                     className="text-md w-full rounded-md border border-solid border-black/10 bg-black/50 px-3 py-2 font-normal outline-2"
                     type="email"
@@ -180,7 +180,7 @@ export function Contact() {
                   {loading && <BounceLoader color="#c471ed" />}
                   <Form.Submit asChild>
                     <button
-                      className="md:text-md relative rounded-full bg-none p-3 text-sm uppercase text-white after:absolute after:bottom-0 after:left-0 after:right-8 after:h-1 after:w-0 after:bg-border after:transition-[all_ease_0.35s] hover:after:left-0 hover:after:right-auto hover:after:w-full lg:text-lg disabled:opacity-40"
+                      className="md:text-md relative rounded-full bg-none p-3 text-sm uppercase text-white after:absolute after:bottom-0 after:left-0 after:right-8 after:h-1 after:w-0 after:bg-border after:transition-[all_ease_0.35s] hover:after:left-0 hover:after:right-auto hover:after:w-full disabled:opacity-40 lg:text-lg"
                       disabled={loading}
                     >
                       Enviar Mensagem

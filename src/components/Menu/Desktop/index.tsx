@@ -8,13 +8,18 @@ interface Props {
   current: Section;
   type: MenuTypes;
   className?: string;
-};
+}
 
-export function MenuTop({ sections, current, type, className = "" }: Props) {
+export function Menu({
+  sections,
+  current,
+  type,
+  className = "",
+}: Props) {
   return (
     <div className={className}>
-      <nav className="flex items-center justify-between py-4 px-2">
-        <ul className="navbar flex flex-row p-4 lg:mx-auto lg:flex-row lg:p-0">
+      <nav className="flex items-center justify-between px-2 py-4">
+        <ul className="flex flex-row p-4 lg:mx-auto lg:flex-row lg:p-0">
           {sections.map((section) => {
             return (
               <Item

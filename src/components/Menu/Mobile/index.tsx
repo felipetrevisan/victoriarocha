@@ -15,7 +15,7 @@ interface Props {
   type: MenuTypes;
 }
 
-export function MenuDrawer({
+export function Menu({
   isOpen = false,
   sections,
   current,
@@ -24,10 +24,7 @@ export function MenuDrawer({
 }: Props) {
   const { toogleMenu } = useApp();
 
-  const classes = clsx(
-    className,
-    "flex flex-col justify-center"
-  );
+  const classes = clsx(className, "flex flex-col justify-center");
 
   return (
     <motion.div
@@ -39,9 +36,8 @@ export function MenuDrawer({
       exit="closed"
       custom={isOpen}
     >
-       <nav className="flex items-center justify-between py-4 px-2">
-        <ul className="navbar flex flex-row p-4 lg:mx-auto lg:flex-row lg:p-0">
-        {/* <ul className="flex flex-col items-center justify-between gap-5 p-4"> */}
+      <nav className="flex items-center justify-between px-2 py-4">
+        <ul className="divide-x-1 flex flex-row gap-4 p-4 lg:mx-auto lg:flex-row lg:p-0">
           {sections.map((section) => {
             return (
               <Item
