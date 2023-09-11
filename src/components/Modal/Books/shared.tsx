@@ -55,7 +55,7 @@ export default function SharedModal({
         </button>
       </div>
       <div
-        className="relative z-50 flex aspect-[3/2] w-full max-w-7xl items-center lg:h-full xl:taller-than-854:h-auto"
+        className="relative z-50 flex aspect-[3/2] w-full max-w-7xl items-center lg:h-full"
         {...handlers}
       >
         {/* Main image */}
@@ -75,6 +75,7 @@ export default function SharedModal({
                   width={navigation ? 800 : 860}
                   height={navigation ? 800 : 860}
                   priority
+                  objectFit="cover"
                   alt=""
                   blurDataURL={currentImage?.blurDataUrl}
                   src={currentImage?.url!}

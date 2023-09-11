@@ -66,7 +66,7 @@ export function Contact() {
       <motion.div
         ref={refContact}
         data-section="contact"
-        className="max-sm::items-center container flex flex-col justify-center md:lg:justify-start"
+        className="container flex flex-col justify-center md:justify-start lg:justify-start"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: [0, 1] }}
@@ -75,120 +75,117 @@ export function Contact() {
         <div className="flex flex-wrap items-center justify-center">
           <Title content="Contato" />
         </div>
-        <div className="flex flex-wrap items-center">
-          <div className="mx-auto w-full">
-            <h6 className="mb-5 flex flex-col items-center justify-center gap-2 md:flex-row">
-              Preencha o formulário ou entre em contato pelo e-mail
-              <a
-                href={`mailto:${process.env.NEXT_PUBLIC_SENDER_EMAIL}`}
-                className="mb-1 ml-2 flex items-center justify-center rounded-md bg-black/40 p-3 text-sm backdrop-blur transition-colors duration-500 ease-in-out hover:bg-pink-800/80"
+        <div className="flex flex-wrap items-center justify-center">
+          <h6 className="mb-5 flex flex-col items-center justify-center gap-2 text-center">
+            Preencha o formulário ou entre em contato pelo e-mail
+            <a
+              href={`mailto:${process.env.NEXT_PUBLIC_SENDER_EMAIL}`}
+              className="mb-1 ml-2 flex items-center justify-center rounded-md bg-black/40 p-3 text-sm backdrop-blur transition-colors duration-500 ease-in-out hover:bg-pink-800/80"
+            >
+              <MailOpen size={14} className="mr-2" />{" "}
+              {process.env.NEXT_PUBLIC_SENDER_EMAIL}
+            </a>
+          </h6>
+          <div className="w-full overflow-hidden rounded-2xl border border-solid border-black/[0.1] bg-white/[0.1] p-6 backdrop-blur-xl backdrop-saturate-[180deg]">
+            {message && (
+              <motion.span
+                className={`mb-1 flex items-baseline justify-between rounded-md p-3 text-sm backdrop-blur ${
+                  message.type === "error" ? "bg-red-950/40" : "bg-lime-950/40"
+                }`}
+                variants={slideUpVariants}
+                initial="initial"
+                animate="animate"
               >
-                <MailOpen size={14} className="mr-2" />{" "}
-                {process.env.NEXT_PUBLIC_SENDER_EMAIL}
-              </a>
-            </h6>
-            <div className="overflow-hidden rounded-2xl border border-solid border-black/[0.1] bg-white/[0.1] p-6 backdrop-blur-xl backdrop-saturate-[180deg]">
-              {message && (
-                <motion.span
-                  className={`mb-1 flex items-baseline justify-between rounded-md p-3 text-sm backdrop-blur ${
-                    message.type === "error"
-                      ? "bg-red-950/40"
-                      : "bg-lime-950/40"
-                  }`}
-                  variants={slideUpVariants}
-                  initial="initial"
-                  animate="animate"
+                {message.message}
+              </motion.span>
+            )}
+            <Form.Root
+              className="grid grid-cols-12 gap-4"
+              onSubmit={handleSubmit((data) => handleSendEmail(data))}
+            >
+              <Form.Field name="name" className="col-span-12 md:col-span-6">
+                <Form.Control
+                  className="text-md w-full rounded-md border border-solid border-black/10 bg-black/50 px-3 py-2 font-normal outline-2"
+                  type="text"
+                  placeholder="Nome *"
+                  required
+                  {...register("name")}
+                />
+                <Form.Message
+                  className="mb-1 mt-1 flex items-baseline justify-between rounded-md bg-purple-950/40 p-3 text-sm backdrop-blur"
+                  match="valueMissing"
                 >
-                  {message.message}
-                </motion.span>
-              )}
-              <Form.Root
-                className="contact-info grid grid-cols-12 gap-4"
-                onSubmit={handleSubmit((data) => handleSendEmail(data))}
-              >
-                <Form.Field name="name" className="col-span-12 md:col-span-6">
-                  <Form.Control
-                    className="text-md w-full rounded-md border border-solid border-black/10 bg-black/50 px-3 py-2 font-normal outline-2"
-                    type="text"
-                    placeholder="Nome *"
+                  Por favor digite seu nome
+                </Form.Message>
+              </Form.Field>
+              <Form.Field name="email" className="col-span-12 md:col-span-6">
+                <Form.Control
+                  className="text-md w-full rounded-md border border-solid border-black/10 bg-black/50 px-3 py-2 font-normal outline-2"
+                  type="email"
+                  placeholder="E-mail *"
+                  required
+                  {...register("email")}
+                />
+                <Form.Message
+                  className="mb-1 mt-1 flex items-baseline justify-between rounded-md bg-purple-950/40 p-3 text-sm backdrop-blur"
+                  match="valueMissing"
+                >
+                  Por favor digite seu e-mail
+                </Form.Message>
+                <Form.Message
+                  className="mb-1 mt-1 flex items-baseline justify-between rounded-md bg-purple-950/40 p-3 text-sm backdrop-blur"
+                  match="typeMismatch"
+                >
+                  Por favor digite um e-mail válido
+                </Form.Message>
+              </Form.Field>
+              <Form.Field name="subject" className="col-span-12">
+                <Form.Control
+                  className="text-md w-full rounded-md border border-solid border-black/10 bg-black/50 px-3 py-2 font-normal outline-2"
+                  type="text"
+                  placeholder="Assunto *"
+                  required
+                  {...register("subject")}
+                />
+                <Form.Message
+                  className="mb-1 mt-1 flex items-baseline justify-between rounded-md bg-purple-950/40 p-3 text-sm backdrop-blur"
+                  match="valueMissing"
+                >
+                  Por favor digite um assunto
+                </Form.Message>
+              </Form.Field>
+              <Form.Field name="message" className="col-span-12">
+                <Form.Control
+                  className="text-md w-full resize-none rounded-md border border-solid border-black/10 bg-black/50 px-3 py-2 font-normal outline-2"
+                  asChild
+                >
+                  <textarea
+                    placeholder="Mensagem *"
+                    className="h-40"
+                    rows={3}
                     required
-                    {...register("name")}
+                    {...register("message")}
                   />
-                  <Form.Message
-                    className="mb-1 mt-1 flex items-baseline justify-between rounded-md bg-purple-950/40 p-3 text-sm backdrop-blur"
-                    match="valueMissing"
+                </Form.Control>
+                <Form.Message
+                  className="mb-1 flex items-baseline justify-between rounded-md bg-purple-950/40 p-3 text-sm backdrop-blur transition-all"
+                  match="valueMissing"
+                >
+                  Por favor digite sua mensagem
+                </Form.Message>
+              </Form.Field>
+              <div className="col-span-12 flex items-center justify-center gap-2 place-self-end">
+                {loading && <BounceLoader color="#c471ed" />}
+                <Form.Submit asChild>
+                  <button
+                    className="md:text-md relative rounded-full bg-none p-3 text-sm uppercase text-white after:absolute after:bottom-0 after:left-0 after:right-8 after:h-1 after:w-0 after:bg-border after:transition-[all_ease_0.35s] hover:after:left-0 hover:after:right-auto hover:after:w-full disabled:opacity-40 lg:text-lg"
+                    disabled={loading}
                   >
-                    Por favor digite seu nome
-                  </Form.Message>
-                </Form.Field>
-                <Form.Field name="email" className="col-span-12 md:col-span-6">
-                  <Form.Control
-                    className="text-md w-full rounded-md border border-solid border-black/10 bg-black/50 px-3 py-2 font-normal outline-2"
-                    type="email"
-                    placeholder="E-mail *"
-                    required
-                    {...register("email")}
-                  />
-                  <Form.Message
-                    className="mb-1 mt-1 flex items-baseline justify-between rounded-md bg-purple-950/40 p-3 text-sm backdrop-blur"
-                    match="valueMissing"
-                  >
-                    Por favor digite seu e-mail
-                  </Form.Message>
-                  <Form.Message
-                    className="mb-1 mt-1 flex items-baseline justify-between rounded-md bg-purple-950/40 p-3 text-sm backdrop-blur"
-                    match="typeMismatch"
-                  >
-                    Por favor digite um e-mail válido
-                  </Form.Message>
-                </Form.Field>
-                <Form.Field name="subject" className="col-span-12">
-                  <Form.Control
-                    className="text-md w-full rounded-md border border-solid border-black/10 bg-black/50 px-3 py-2 font-normal outline-2"
-                    type="text"
-                    placeholder="Assunto *"
-                    required
-                    {...register("subject")}
-                  />
-                  <Form.Message
-                    className="mb-1 mt-1 flex items-baseline justify-between rounded-md bg-purple-950/40 p-3 text-sm backdrop-blur"
-                    match="valueMissing"
-                  >
-                    Por favor digite um assunto
-                  </Form.Message>
-                </Form.Field>
-                <Form.Field name="message" className="col-span-12">
-                  <Form.Control
-                    className="text-md w-full resize-none rounded-md border border-solid border-black/10 bg-black/50 px-3 py-2 font-normal outline-2"
-                    asChild
-                  >
-                    <textarea
-                      placeholder="Mensagem *"
-                      rows={3}
-                      required
-                      {...register("message")}
-                    />
-                  </Form.Control>
-                  <Form.Message
-                    className="mb-1 flex items-baseline justify-between rounded-md bg-purple-950/40 p-3 text-sm backdrop-blur transition-all"
-                    match="valueMissing"
-                  >
-                    Por favor digite sua mensagem
-                  </Form.Message>
-                </Form.Field>
-                <div className="col-span-12 flex items-center justify-center gap-2 place-self-end">
-                  {loading && <BounceLoader color="#c471ed" />}
-                  <Form.Submit asChild>
-                    <button
-                      className="md:text-md relative rounded-full bg-none p-3 text-sm uppercase text-white after:absolute after:bottom-0 after:left-0 after:right-8 after:h-1 after:w-0 after:bg-border after:transition-[all_ease_0.35s] hover:after:left-0 hover:after:right-auto hover:after:w-full disabled:opacity-40 lg:text-lg"
-                      disabled={loading}
-                    >
-                      Enviar Mensagem
-                    </button>
-                  </Form.Submit>
-                </div>
-              </Form.Root>
-            </div>
+                    Enviar Mensagem
+                  </button>
+                </Form.Submit>
+              </div>
+            </Form.Root>
           </div>
         </div>
       </motion.div>

@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="scrollbar-thumb-rounded-md scrollbar-thin scrollbar-thumb-purple-500">
       <AppProvider>
         <Body>
           <Header />

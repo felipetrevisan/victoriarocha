@@ -44,9 +44,9 @@ export function Release() {
         transition={{ delay: 0.4, duration: 0.8, ease: "easeInOut" }}
       >
         <div className="container">
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:place-items-start taller-than-854:place-items-center">
-            <div className="landscape:md:col-span-7 landscape:lg:col-span-6 md:col-span-5 relative flex justify-center lg:col-span-6">
-              <div className="relative m-auto mx-auto max-w-[400px] overflow-hidden rounded-full lg:mt-28 taller-than-854:mt-0">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:place-items-start">
+            <div className="landscape:md:col-span-7 landscape:lg:col-span-6 md:col-span-7 relative flex justify-center lg:col-span-6">
+              <div className="relative m-auto mx-auto max-w-[400px] overflow-hidden rounded-full lg:mt-28">
                 <motion.div
                   className="md:h-[400px] md:w-[400px] md:max-w-[400px] group relative h-[300px] w-[300px] max-w-[300px] rounded-full lg:h-[400px] lg:w-[400px] lg:max-w-[400px]"
                   initial="initial"
@@ -62,7 +62,7 @@ export function Release() {
                   />
                 </motion.div>
                 <motion.div
-                  className="absolute bottom-8 left-0 right-0 flex justify-center"
+                  className="lg:hidden absolute bottom-8 left-0 right-0 flex justify-center"
                   initial="hide"
                   whileInView="show"
                   exit="hide"
@@ -79,7 +79,7 @@ export function Release() {
                   <div className="flex flex-col gap-6 text-justify">
                     <h2>
                       <p
-                        className={`${oswald.className} inline-flex text-2xl text-pink-400`}
+                        className={`${oswald.className} inline-flex text-xl text-pink-400`}
                       >
                         Victória Rocha
                       </p>{" "}

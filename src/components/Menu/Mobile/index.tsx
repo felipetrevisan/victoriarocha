@@ -6,6 +6,7 @@ import type { MenuTypes, Section } from "@/types";
 import { useApp } from "@/hooks/useApp";
 import { menuMobileVariants } from "@/config/animation";
 import { Item } from "../Item";
+import { useCallback } from "react";
 
 interface Props {
   isOpen: boolean;
@@ -26,6 +27,12 @@ export function Menu({
 
   const classes = clsx(className, "flex flex-col justify-center");
 
+  const onMenuClick = useCallback((active: boolean) => {
+    if (active) return;
+
+    toogleMenu();
+  }, [toogleMenu]);
+
   return (
     <motion.div
       className={classes}
@@ -37,15 +44,18 @@ export function Menu({
       custom={isOpen}
     >
       <nav className="flex items-center justify-between px-2 py-4">
-        <ul className="divide-x-1 flex flex-row gap-4 p-4 lg:mx-auto lg:flex-row lg:p-0">
+        <ul className="divide-x-1 flex flex-row gap-3 p-4 lg:mx-auto lg:flex-row lg:p-0">
           {sections.map((section) => {
+            const isActive = current.path === section?.path;
+
             return (
               <Item
                 key={section.name.toLocaleLowerCase()}
-                section={section}
-                active={current.path === section?.path}
+                active={isActive}
+                href={section.path}
+                label={section.label}
                 type={type}
-                onClick={toogleMenu}
+                onClick={() => onMenuClick(isActive)}
               />
             );
           })}

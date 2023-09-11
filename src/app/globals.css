@@ -27,7 +27,11 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+:root {
+  --header-size: 64.5px;
+}
+
 .container {
-  @apply z-50 w-[min(100%-3rem,100ch)];
+  @apply w-[min(100%-3rem,100ch)];
   margin-inline: auto;
 }
