@@ -63,7 +63,7 @@ export function Home() {
               >
                 <Link
                   href="/contact"
-                  className="relative flex h-full items-center justify-center rounded-md bg-black/70 p-5 after:absolute after:left-[-1*3px] after:top-[-1*3px] after:-z-[1] after:h-[calc(100%+3px*2)] after:w-[calc(100%+3px*2)] after:rounded-md after:bg-gradient-to-r after:from-[#12c2e9] after:via-[#c471ed] after:to-[#f64f59] hover:bg-black/50 hover:after:animate-pulse dark:bg-black/90 dark:hover:bg-black/70"
+                  className="relative flex h-full items-center justify-center rounded-md bg-black/70 p-5 after:absolute after:left-[-1*3px] after:top-[-1*3px] after:-z-[1] after:h-[calc(100%+3px*2)] after:w-[calc(100%+3px*2)] after:rounded-md after:bg-gradient-to-r after:from-[#12c2e9] after:via-[#c471ed] after:to-[#f64f59] hover:bg-black/50 hover:after:animate-pulse"
                 >
                   <span className="md:text-md flex items-center justify-center gap-2 text-sm uppercase text-white lg:text-lg">
                     <span>Entre em contato</span>
@@ -74,7 +74,7 @@ export function Home() {
                 </Link>
                 <Link
                   href="https://victoriarocha.s3.sa-east-1.amazonaws.com/downloads/2020_Victo%CC%81ria%20Rocha.pdf"
-                  className="relative flex h-full items-center justify-center rounded-md bg-black/70 p-5 after:absolute after:left-[-1*3px] after:top-[-1*3px] after:-z-[1] after:h-[calc(100%+3px*2)] after:w-[calc(100%+3px*2)] after:rounded-md after:bg-gradient-to-r after:from-[#12c2e9] after:via-[#c471ed] after:to-[#f64f59] hover:bg-black/50 hover:after:animate-pulse dark:bg-black/90 dark:hover:bg-black/70"
+                  className="relative flex h-full items-center justify-center rounded-md bg-black/70 p-5 after:absolute after:left-[-1*3px] after:top-[-1*3px] after:-z-[1] after:h-[calc(100%+3px*2)] after:w-[calc(100%+3px*2)] after:rounded-md after:bg-gradient-to-r after:from-[#12c2e9] after:via-[#c471ed] after:to-[#f64f59] hover:bg-black/50 hover:after:animate-pulse"
                   download={true}
                   rel="noopeneer noreferrer"
                   target="_blank"

@@ -62,7 +62,7 @@ export function Books({ images, itemsPerPage = 6 }: Props) {
         <div className="flex flex-row gap-7 justify-center md:flex-col">
           <AnimatePresence>
             <div className="overflow-hidden rounded-2xl border border-solid border-black/[0.1] bg-white/[0.1] p-6 backdrop-blur-xl backdrop-saturate-[180deg]">
-              <div className="columns-1 sm:columns-2 gap-4 lg:columns-3 xl:columns-3 2xl:columns-3">
+              <div className="columns-1 portrait:sm:columns-2 gap-4 lg:columns-3 xl:columns-4 2xl:columns-4">
                 {images
                   .slice((page - 1) * +itemsPerPage, page * +itemsPerPage)
                   .map((photo: ImageType) => (

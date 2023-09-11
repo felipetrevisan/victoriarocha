@@ -13,24 +13,16 @@ export function Footer() {
 
   return (
     <motion.footer
-      className="w-screen border-t border-white border-opacity-10 bg-black bg-black/70 py-5 shadow-black backdrop-blur-md md:px-12 lg:px-16"
+      className="flex items-center justify-center landscape:justify-between border-t border-white border-opacity-10 bg-black/70 portrait:gap-2 portrait:flex-col select-none w-full px-5 py-4 lg:px-12 md:px-12"
       initial="hide"
       whileInView="show"
       exit="hide"
       variants={headerVariants}
     >
-      <div className="grid grid-cols-12 place-items-center portrait:gap-2">
-        <div className="col-span-12 text-center md:col-span-6">
-          <div className="flex w-full justify-center md:justify-start">
-            <SocialNetworks location={ContentArea.footer} size={18} />
-          </div>
-        </div>
-        <div className="col-span-12 text-center md:col-span-6 md:text-right">
-          <p className="m-0 text-white text-opacity-75">
-            © {new Date().getFullYear()} - Todos os direitos reservados
-          </p>
-        </div>
-      </div>
+      <SocialNetworks location={ContentArea.footer} size={18} className="2xl:hidden z-[100]" />
+      <p className="m-0 text-white text-opacity-75 text-center">
+        © {new Date().getFullYear()} - Todos os direitos reservados
+      </p>
     </motion.footer>
   );
 }

@@ -107,17 +107,6 @@ export const headerLogoVariants: Variants = {
   },
 };
 
-export const pageTitleVariants: Variants = {
-  visible: (status: boolean = true) => {
-    return {
-      opacity: status ? 0 : 1,
-      transition: {
-        duration: 0.5
-      },
-    };
-  },
-};
-
 export const slideUpVariants: Variants = {
   initial: {
     opacity: 0,

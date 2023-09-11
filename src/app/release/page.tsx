@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Release as Content } from "@/components/Sections/Release";
 
-export default function Release() {
+export default async function Release() {
   return (
     <motion.section id="release" initial="hide" whileInView="show" exit="hide">
       <Content />

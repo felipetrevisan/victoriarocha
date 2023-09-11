@@ -21,12 +21,15 @@ export function Menu({
       <nav className="flex items-center justify-between px-2 py-4">
         <ul className="flex flex-row p-4 lg:mx-auto lg:flex-row lg:p-0">
           {sections.map((section) => {
+            const isActive = current.path === section.path;
+
             return (
               <Item
                 key={section.name.toLocaleLowerCase()}
-                section={section}
-                active={current.path === section.path}
-                className="px-2"
+                label={section.label}
+                active={isActive}
+                href={section.path}
+                className={`px-2 ${isActive ? 'pointer-events-none' : ''}`}
                 type={type}
               />
             );
