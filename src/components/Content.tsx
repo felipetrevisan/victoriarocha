@@ -12,7 +12,7 @@ export function Content({ children }: { children: ReactNode }) {
     "relative z-30 h-full section flex portrait:md:items-center lg:items-center justify-center",
     {
       "py-0": isInHome(),
-      "sm:landscape:my-0 lg:landscape:mt-32 lg:landscape:mb-24 py-10 portrait:my-16 xl:landscape:mt-32 xl:landscape:mb-24 xl:py-0 portrait:md:h-[calc(100vh-23vh)] 2xl:h-[calc(100vh-23vh)]": !isInHome(),
+      "sm:landscape:my-0 lg:landscape:mt-32 lg:landscape:mb-24 py-10 portrait:my-16 xl:landscape:mt-32 xl:landscape:mb-24 xl:py-0 portrait:lg:h-[calc(100vh-23vh)] 2xl:h-[calc(100vh-23vh)]": !isInHome(),
     }
   );
 

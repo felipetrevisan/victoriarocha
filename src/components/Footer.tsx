@@ -13,14 +13,18 @@ export function Footer() {
 
   return (
     <motion.footer
-      className="flex items-center justify-center landscape:justify-between border-t border-white border-opacity-10 bg-black/70 portrait:gap-2 portrait:flex-col select-none w-full px-5 py-4 lg:px-12 md:px-12"
+      className="flex w-full select-none items-center justify-center border-t border-white border-opacity-10 bg-black/70 px-5 py-4 md:px-12 lg:px-12 portrait:flex-col portrait:gap-2 landscape:justify-between"
       initial="hide"
       whileInView="show"
       exit="hide"
       variants={headerVariants}
     >
-      <SocialNetworks location={ContentArea.footer} size={18} className="2xl:hidden z-[100]" />
-      <p className="m-0 text-white text-opacity-75 text-center">
+      <SocialNetworks
+        location={ContentArea.footer}
+        size={18}
+        className="z-[100] 2xl:hidden"
+      />
+      <p className="m-0 text-center text-white text-opacity-75">
         © {new Date().getFullYear()} - Todos os direitos reservados
       </p>
     </motion.footer>
