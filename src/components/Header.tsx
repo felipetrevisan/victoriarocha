@@ -44,7 +44,7 @@ export function Header() {
         exit="hide"
         variants={headerVariants}
       >
-        <div className="flex w-full flex-col items-center justify-between">
+        <div className="container flex w-full flex-col items-center justify-between">
           <motion.nav className="flex w-full items-center justify-between">
             <motion.div className="logo">
               <MotionLinkComponent

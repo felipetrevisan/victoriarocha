@@ -111,6 +111,10 @@ export const slideUpVariants: Variants = {
   initial: {
     opacity: 0,
     y: 50,
+    transition: {
+      staggerChildren: 0.2,
+      staggerDirection: -1,
+    },
   },
   animate: {
     opacity: 1,
