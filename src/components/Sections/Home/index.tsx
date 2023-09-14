@@ -32,6 +32,7 @@ export function Home() {
     <>
       <TransitionEffect />
       <motion.div
+        layout
         ref={refHome}
         className="w-screen max-w-full"
         data-section="home"
